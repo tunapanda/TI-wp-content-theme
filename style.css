@@ -66,6 +66,10 @@ body {
 	color: #53ad35;
 }
 
+#header ul.children {
+	display: none;
+}
+
 /**** Content. ****/
 #content {
 	margin-left: 80px;
@@ -78,6 +82,51 @@ body {
 	font-size: 40px;
 	margin-top: 20px;
 	margin-bottom: 20px;
+}
+
+/**** Track and listing. ****/
+.tracklisting, .courselisting {
+	position: relative;
+	background: #ffffff;
+	border-radius: 10px;
+	width: 300px;
+	height: 200px;
+	box-shadow: 0px 0px 10px #808080;
+	margin-bottom: 20px;
+	margin-right: 20px;
+	display: inline-block;
+}
+
+.tracklisting .header, .courselisting .header {
+	position: absolute;
+	width: 300px;
+	background: #009900;
+	border-radius: 10px 10px 0 0;
+	height: 40px;
+}
+
+.tracklisting .title, .courselisting .title {
+	position: absolute;
+	left: 20px;
+	font-size: 20px;
+	font-weight: bold;
+	top: 10px;
+}
+
+.tracklisting a, .courselisting a {
+	position: absolute;
+	left: 20px;
+	bottom: 20px;
+	background: #009900;
+	padding: 10px;
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: bold;
+	border-radius: 5px;
+}
+
+.courselisting a, .courselisting .header {
+	background: #ace600;
 }
 
 /**** H5P. ****/
