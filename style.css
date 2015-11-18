@@ -97,6 +97,45 @@ body {
 	margin-bottom: 20px;
 }
 
+.content-tab-content {
+	background: #fff;
+	border: 1px solid #ddd;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+ul.content-tab-list {
+	margin: 0;
+	padding: 0;
+	padding-left: 10px;
+}
+
+.content-tab-list li {
+	display: inline-block;
+	padding: 10px;
+/*	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow-x: hidden;
+	max-width: 100px;*/
+}
+
+.content-tab-list li.selected {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-bottom: none;
+	height: 25px;
+	margin-bottom: -1px;
+}
+
+.content-tab-list li a {
+	color: #999;
+	text-decoration: none;
+}
+
+.content-tab-list li.selected a {
+	color: #666;
+}
+
 /**** Track and listing. ****/
 .listing {
 	position: relative;

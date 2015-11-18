@@ -68,10 +68,20 @@
 	function ti_course($args, $content) {
 		global $wpdb;
 
+		$current=get_post();
+
+		$tab=0;
+		if (array_key_exists("tab",$_REQUEST))
+			$tab=$_REQUEST["tab"];
+
 		$wpdb->show_errors();
-		$s='';
+		$s="<div class='content-tab-wrapper'>";
+		$s.="<ul class='content-tab-list'>";
 
 		$courseTitles=explode("\n",$content);
+		$tabContent="";
+		$index=0;
+
 		foreach ($courseTitles as $courseTitle) {
 			$courseTitle=trim(strip_tags($courseTitle));
 			if ($courseTitle) {
@@ -83,12 +93,34 @@
 				);
 
 				$courseId=$wpdb->get_var($q);
+				$sel="";
 
-				$s.="[tabby title='$courseTitle'][h5p id='$courseId']";
+				if ($index==$tab) {
+					$tabContent=
+						"<div class='content-tab-content'>".
+						"[h5p id='$courseId']".
+						"</div>";
+
+					$sel="class='selected'";
+				}
+
+				$link=get_page_link($current->ID)."?tab=".$index;
+
+				$c=$courseTitle;
+				if (strlen($c)>20)
+					$c=substr($c,0,20)."...";
+
+				$s.="<li $sel>";
+				$s.="<a href='$link'>$c</a>";
+				$s.="</li>";
+
+				$index++;
 			}
 		}
 
-		$s.='[tabbyending]';
+		$s.="</ul>";
+		$s.=$tabContent;
+		$s.='</div>';
 
 		return do_shortcode($s);
 	}
