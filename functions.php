@@ -94,3 +94,12 @@
 	}
 
 	add_shortcode("course","ti_course");
+
+	/**
+	 * Init.
+	 */
+	function ti_init() {
+		add_post_type_support('page','excerpt');
+	}
+
+	add_action("init","ti_init");
