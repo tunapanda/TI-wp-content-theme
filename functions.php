@@ -103,3 +103,4 @@
 	}
 
 	add_action("init","ti_init");
+	add_theme_support('menus');

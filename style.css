@@ -71,6 +71,14 @@ body {
 	display: none;
 }
 
+#header .menu li {
+	display: none;
+}
+
+#header .menu li.page_item_has_children {
+	display: inline-block;
+}
+
 /**** Content. ****/
 #content p {
 	margin-bottom: 30px;
