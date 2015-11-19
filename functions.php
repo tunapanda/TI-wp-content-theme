@@ -66,66 +66,88 @@
 	 * Handle the course shortcode.
 	 */
 	function ti_course($args, $content) {
-		global $wpdb;
+		global $ti_course_items;
 
-		$current=get_post();
+		$ti_course_items=array();
+		do_shortcode($content);
 
 		$tab=0;
-		if (array_key_exists("tab",$_REQUEST))
+		if (array_key_exists("tab",$_REQUEST) && $_REQUEST["tab"])
 			$tab=$_REQUEST["tab"];
 
-		$wpdb->show_errors();
 		$s="<div class='content-tab-wrapper'>";
 		$s.="<ul class='content-tab-list'>";
 
-		$courseTitles=explode("\n",$content);
-		$tabContent="";
 		$index=0;
+		foreach ($ti_course_items as $courseItem) {
+			$link=get_page_link($current->ID)."?tab=".$index;
+			$sel="";
 
-		foreach ($courseTitles as $courseTitle) {
-			$courseTitle=trim(strip_tags($courseTitle));
-			if ($courseTitle) {
-				$q=$wpdb->prepare(
-					"SELECT id ".
-					"FROM   {$wpdb->prefix}h5p_contents ".
-					"WHERE  title=%s",
-					$courseTitle
-				);
+			if ($index==$tab)
+				$sel="class='selected'";
 
-				$courseId=$wpdb->get_var($q);
-				$sel="";
+			$s.="<li $sel>";
+			$s.="<a href='$link'>{$courseItem[title]}</a>";
+			$s.="</li>";
 
-				if ($index==$tab) {
-					$tabContent=
-						"<div class='content-tab-content'>".
-						"[h5p id='$courseId']".
-						"</div>";
-
-					$sel="class='selected'";
-				}
-
-				$link=get_page_link($current->ID)."?tab=".$index;
-
-				$c=$courseTitle;
-				if (strlen($c)>20)
-					$c=substr($c,0,20)."...";
-
-				$s.="<li $sel>";
-				$s.="<a href='$link'>$c</a>";
-				$s.="</li>";
-
-				$index++;
-			}
+			$index++;
 		}
 
 		$s.="</ul>";
-		$s.=$tabContent;
+		$s.="<div class='content-tab-content'>";
+		$s.=do_shortcode($ti_course_items[$tab]["content"]);
+		$s.="</div>";
 		$s.='</div>';
 
-		return do_shortcode($s);
+		return $s;
 	}
 
 	add_shortcode("course","ti_course");
+
+	/**
+	 * Get h5p content from the database.
+	 */
+	function getH5pContentBy($by, $value) {
+		global $wpdb;
+
+		$q=$wpdb->prepare(
+			"SELECT * ".
+			"FROM   {$wpdb->prefix}h5p_contents ".
+			"WHERE  $by=%s",
+			$value
+		);
+
+		return $wpdb->get_row($q);
+	}
+
+	/**
+	 * The h5p-course-item short code.
+	 */
+	function ti_h5p_course_item($args) {
+		global $ti_course_items;
+
+		if (array_key_exists("id", $args))
+			$h5pContent=getH5pContentBy("id",$args["id"]);
+
+		else if (array_key_exists("title", $args))
+			$h5pContent=getH5pContentBy("title",$args["title"]);
+
+		if (!$h5pContent) {
+			$ti_course_items[]=array(
+				"title"=>"Not found",
+				"content"=>"H5P Content not found<br><pre>".print_r($args,TRUE)."</pre>"
+			);
+
+			return;
+		}
+
+		$ti_course_items[]=array(
+			"title"=>$h5pContent->title,
+			"content"=>"[h5p id='$h5pContent->id']"
+		);
+	}
+
+	add_shortcode("h5p-course-item","ti_h5p_course_item");
 
 	/**
 	 * Init.
