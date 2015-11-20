@@ -1,2 +1,2 @@
 # TI-wp-content-theme
-Wordpress theme for Tunapanda content.
+Wordpress theme for [content.tunapanda.org](http://content.tunapanda.org/).
