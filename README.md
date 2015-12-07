@@ -16,8 +16,8 @@ npm install
 ```
 Important: After you clone and install the theme on your machine, you will need to activate it and this is how;
 - Go to Apperance, point to theme and click.
+- Locate content_tunapanda_org theme and click on Activate.
 
-- Locate content_tunapanda_org and click on Activate.
 
 
 
