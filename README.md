@@ -9,7 +9,7 @@ In order to participate in the developemnt, you need to have the following thigs
  * NodeJS and NPM.
  * Grunt (install with `npm install -g grunt grunt-cli`)
 
-Then, clone this repository and put it in your Wordpress themes folder. If you prefer, you can clone it to somewhere else on your local machine as symlink it from the themes folder. Inside the cloned folder, run:
+Then, clone this repository and put it in your Wordpress themes folder. If you prefer, you can clone it to somewhere else on your local machine as symlink it from the themes folder. 
 
 Important: After you clone and install the theme on your machine, you will need to activate it and this is how;
 - Go to Apperance, point to theme and click.
@@ -23,6 +23,7 @@ Important: After you clone and install the theme on your machine, you will need 
 
 -<img src="https://raw.githubusercontent.com/tunapanda/TI-wp-content-theme/master/activate_lead.png">
 
+Inside the cloned folder, run:
 ```
 npm install
 ```
