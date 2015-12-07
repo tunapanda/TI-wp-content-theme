@@ -13,8 +13,14 @@ Then, clone this repository and put it in your Wordpress themes folder. If you p
 
 Important: After you clone and install the theme on your machine, you will need to activate it and this is how;
 - Go to Apperance, point to theme and click.
+ 
+
 - <img src="https://raw.githubusercontent.com/tunapanda/TI-wp-content-theme/master/theme_lead.png"> 
+-
+
 - Locate content_tunapanda_org theme and click on Activate.
+
+
 -<img src="https://raw.githubusercontent.com/tunapanda/TI-wp-content-theme/master/activate_lead.png">
 
 ```
