@@ -17,7 +17,7 @@
 					echo '</li>';
 				}
 				echo '<li>';
-				echo '<a href="'.$post -> post_name.'">';
+				echo '<a href="">';
 				echo  get_the_title(get_the_ID());
 				echo "</a>";	
 				echo '</li>';
