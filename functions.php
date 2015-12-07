@@ -66,6 +66,10 @@
 	 * Handle the course shortcode.
 	 */
 	function ti_course($args, $content) {
+		$post=get_post();
+		//print_r($post);
+		//print_r(get_post_meta($post->ID));
+
 		global $ti_course_items;
 
 		$ti_course_items=array();
@@ -154,6 +158,7 @@
 	 */
 	function ti_init() {
 		add_post_type_support('page','excerpt');
+		add_post_type_support('page','custom-fields');
 	}
 
 	add_action("init","ti_init");

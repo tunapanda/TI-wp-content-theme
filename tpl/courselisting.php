@@ -9,5 +9,5 @@
 		<?php echo $page->post_excerpt; ?>
 	</div>
 
-	<a href="<?php echo get_page_link($page->ID); ?>">Follow swagpath</a>
+	<a href="<?php echo get_page_link($page->ID); ?>">Follow Swagpath</a>
 </div>
