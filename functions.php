@@ -29,6 +29,9 @@
 
 		$user=wp_get_current_user();
 
+		if (!$user || !$user->user_email)
+			return;
+
 		$params=array();
 		$params["agentEmail"]=$user->user_email;
 		$params["activity"]=$activityUrl;
