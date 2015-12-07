@@ -4,7 +4,7 @@
 		<?php
 		//var_dump( $post);
 			if (!is_front_page()){
-				echo '<div >';
+				echo '<div id="breadcrumbs">';
 				echo '<ul id="breadcrumb">';
 				for ($i = count($post->ancestors)-1; $i >= 0; $i--) {
 					echo '<li>';
