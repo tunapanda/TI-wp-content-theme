@@ -11,16 +11,14 @@ In order to participate in the developemnt, you need to have the following thigs
 
 Then, clone this repository and put it in your Wordpress themes folder. If you prefer, you can clone it to somewhere else on your local machine as symlink it from the themes folder. Inside the cloned folder, run:
 
+Important: After you clone and install the theme on your machine, you will need to activate it and this is how;
+- Go to Apperance, point to theme and click.
+- 
+- Locate content_tunapanda_org theme and click on Activate.
+
 ```
 npm install
 ```
-Important: After you clone and install the theme on your machine, you will need to activate it and this is how;
-- Go to Apperance, point to theme and click.
-- Locate content_tunapanda_org theme and click on Activate.
-
-
-
-
 In order to install some dependencies required for the deployment script. Each time you want to deploy onto the server, do:
 
 ```
