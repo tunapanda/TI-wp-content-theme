@@ -1,19 +1,28 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<h1><?php //the_title( '<h1 class="entry-title">', '</h1>' ); ?></h1>
 	
-		<?php 
+		<?php
+		//var_dump( $post);
 			if (!is_front_page()){
-				echo '<div id="breadcrumbs">';
+				echo '<div >';
+				echo '<ul id="breadcrumb">';
 				for ($i = count($post->ancestors)-1; $i >= 0; $i--) {
+					echo '<li>';
 					if (($home->ID) != ($post->ancestors[$i])) {
-						echo '<a id="breadcrumbs_links" href="';
+						echo '<a  href="';
 						echo get_permalink($post->ancestors[$i]); 
 						echo '">';
 						echo get_the_title($post->ancestors[$i]);
-						echo "</a>".">>";
 					}
+					echo '</li>';
 				}
-				echo get_the_title(get_the_ID());
+				echo '<li>';
+				echo '<a href="'.$post -> post_name.'">';
+				echo  get_the_title(get_the_ID());
+				echo "</a>";	
+				echo '</li>';
+
+				echo '</ul>';
 				echo '</div>';
 			}
 		?>
