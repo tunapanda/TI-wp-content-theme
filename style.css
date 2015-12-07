@@ -89,51 +89,52 @@ body {
 	margin-right: 80px;
 }
 
-#content h1 {
-	margin: 0;
-	padding: 0;
-	font-size: 40px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+.content-tab-wrapper {
+	position: relative;
 }
 
 .content-tab-content {
 	background: #fff;
 	border: 1px solid #ddd;
 	padding: 20px;
-	margin-bottom: 20px;
+	margin-bottom: 40px;
+	margin-left: 45px;
 }
 
-ul.content-tab-list {
+.content-tab-content h1 {
+	font-size: 24px;
+	padding: 0;
+	margin: 0;
+	margin-bottom: 20px;
+	font-weight: bold;
+	color: #a0a0a0;
+}
+
+.content-tab-list {
 	margin: 0;
 	padding: 0;
-	padding-left: 10px;
+	display: block;
+	position: absolute;
+	padding-top: 20px;
 }
 
 .content-tab-list li {
-	display: inline-block;
-	padding: 10px;
-/*	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow-x: hidden;
-	max-width: 100px;*/
+	display: block;
+	height: 45px;
+	width: 45px;
+	margin: 1px;
 }
 
 .content-tab-list li.selected {
 	background-color: #fff;
 	border: 1px solid #ddd;
-	border-bottom: none;
-	height: 25px;
-	margin-bottom: -1px;
+	border-right: none;
+	margin: 0;
 }
 
-.content-tab-list li a {
-	color: #999;
-	text-decoration: none;
-}
-
-.content-tab-list li.selected a {
-	color: #666;
+img.coursepresentation {
+	margin-left: 5px;
+	margin-top: 5px;
 }
 
 /**** Track and listing. ****/
@@ -191,7 +192,6 @@ ul.content-tab-list {
 /**** H5P. ****/
 .h5p-iframe-wrapper {
 	box-shadow: 0px 0px 10px #808080;
-	margin-bottom: 40px;
 }
 
 /****breadcrumbs***/
