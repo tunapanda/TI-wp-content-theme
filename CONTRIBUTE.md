@@ -31,12 +31,13 @@ Next, hover over "H5P Content" on the left hand side and then click "Add New".
 
 ### Uploading pre-created H5P swagifacts
 
-[INSERT UPLOAD IMAGE]
-
 1. Select "Upload" on the right hand side.
 2. Add a Title for your swagifact.
 3. Click "Choose File" and select the H5P swagifact you would like to upload.
 4. Click the blue "Create" button.
+
+[INSERT UPLOAD IMAGE]
+
 5. Click "Add New" on the left side again and repeat steps 1-4 as needed.
 
 [INSERT ADD NEW AGAIN IMAGE]
