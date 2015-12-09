@@ -49,7 +49,7 @@ Next, hover over "H5P Content" on the left hand side and then click "Add New".
 
  [INSERT CREATEH5P IMAGE HERE]
 
-3. Select an H5P swagifact type, for example "[Presentation](https://h5p.org/tutorial-course-presentation)". (There are tutorials available [here](https://h5p.org/documentation/for-authors/tutorials)).
+3. Select an H5P swagifact type, for example "[Presentation](https://h5p.org/tutorial-course-presentation)". (There are tutorials for other H5P types available [here](https://h5p.org/documentation/for-authors/tutorials)).
 
  [INSERT H5PTYPE IMAGE HERE]
 
