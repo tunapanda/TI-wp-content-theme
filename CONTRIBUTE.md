@@ -36,31 +36,31 @@ Next, hover over "H5P Content" on the left hand side and then click "Add New".
 3. Click "Choose File" and select the H5P swagifact you would like to upload.
 4. Click the blue "Create" button.
 
-[INSERT UPLOAD IMAGE]
+ [INSERT UPLOAD IMAGE]
 
 5. Click "Add New" on the left side again and repeat steps 1-4 as needed.
 
-[INSERT ADD NEW AGAIN IMAGE]
+ [INSERT ADD NEW AGAIN IMAGE]
 
 ### Creating H5P swagifacts 
 
 1. Select "Create" on the right hand side.
 2. Add a Title for your swagifact.
 
-[INSERT CREATEH5P IMAGE HERE]
+ [INSERT CREATEH5P IMAGE HERE]
 
 3. Select an H5P swagifact type, for example "[Presentation](https://h5p.org/tutorial-course-presentation)". (There are tutorials available [here](https://h5p.org/documentation/for-authors/tutorials)).
 
-[INSERT H5PTYPE IMAGE HERE]
+ [INSERT H5PTYPE IMAGE HERE]
 
 4. Build your swagifact.
 5. Click the blue "Create" button.
 
-[INSERT CREATEPRESENTATION IMAGE]
+ [INSERT CREATEPRESENTATION IMAGE]
 
 6. Click "Add New" on the left side again and repeat steps 1-4 as needed.
 
-[INSERT ADD NEW AGAIN IMAGE]
+ [INSERT ADD NEW AGAIN IMAGE]
 
 ## Step 3: Designing the swagifacts into a swagpath
 
