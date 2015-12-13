@@ -12,7 +12,7 @@ To earn the swag points for the "Creating a Usable Swagpath on http://content.tu
 
 ## Step 1: Securing an author account
 
-To secure an author account please send an email to wp-authors@tunapanda.org with a brief description of why you would like an account and what swagifacts or swagpaths you are interested in creating. We will respond within 48 business hours.
+To secure an author account please send an email to wp-authors@tunapanda.org with a brief description of why you would like an account and what swagifacts and/or swagpaths you are interested in creating. We will respond within 48 business hours.
 
 In the meantime, you can begin creating H5P swagifacts by either [test driving H5P](https://h5p.org/testdrive-h5p) or [installing H5P on your machine or website](https://h5p.org/installation). The H5P items you create now can be saved and uploaded to http://content.tunapanda.org later.
 
