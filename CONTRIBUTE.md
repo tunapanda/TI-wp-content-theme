@@ -23,11 +23,11 @@ _Note: this step assumes you know how to author H5P items. You can [learn how to
 
 First, head over to http://content.tunapanda.org/wp-admin and login with your Author Account (which you acquired in Step 1).
 
-[INSERT LOGIN IMAGE]
+![Wordpress Login](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/logincontentwpadmin.png)
 
 Next, hover over "H5P Content" on the left hand side and then click "Add New".
 
-[INSERT ADD NEW IMAGE]
+![Click on H5P](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/clickh5psmall.png)
 
 ### Uploading pre-created H5P swagifacts
 
@@ -36,31 +36,31 @@ Next, hover over "H5P Content" on the left hand side and then click "Add New".
 3. Click "Choose File" and select the H5P swagifact you would like to upload.
 4. Click the blue "Create" button.
 
- [INSERT UPLOAD IMAGE]
+ ![Upload H5P](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/uploadh5p.png)
 
 5. Click "Add New" on the left side again and repeat steps 1-4 as needed.
 
- [INSERT ADD NEW AGAIN IMAGE]
+ ![Add New](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/addnewagain.png)
 
 ### Creating H5P swagifacts 
 
 1. Select "Create" on the right hand side.
 2. Add a Title for your swagifact.
 
- [INSERT CREATEH5P IMAGE HERE]
+ ![Upload H5P](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/createh5p.png)
 
 3. Select an H5P swagifact type, for example "[Presentation](https://h5p.org/tutorial-course-presentation)". (There are tutorials for other H5P types available [here](https://h5p.org/documentation/for-authors/tutorials)).
 
- [INSERT H5PTYPE IMAGE HERE]
+ ![Choose a Type](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/h5ptype.png)
 
 4. Build your swagifact.
 5. Click the blue "Create" button.
 
- [INSERT CREATEPRESENTATION IMAGE]
+ ![Create a Presentation](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/createpresentation.png)
 
 6. Click "Add New" on the left side again and repeat steps 1-4 as needed.
 
- [INSERT ADD NEW AGAIN IMAGE]
+ ![Add New](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/addnewagain.png)
 
 ## Step 3: Designing the swagifacts into a swagpath
 
