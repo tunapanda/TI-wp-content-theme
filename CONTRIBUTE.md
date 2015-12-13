@@ -57,10 +57,27 @@ Next, hover over "H5P Content" on the left hand side and then click "Add New".
 
  ![Create a Presentation](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/createpresentation.png)
 
-6. Click "Add New" on the left side again and repeat steps 1-4 as needed.
+6. Click "Add New" on the left side again and repeat steps 1-5 as needed.
 
  ![Add New](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/addnewagain.png)
 
 ## Step 3: Designing the swagifacts into a swagpath
+
+Swagpaths are made by creating a new Page in Wordpress, using the [course] and [h5p-course-item] shortcodes to create an ordered list of H5P swagifacts, and placing the swagpath in the appropriate part of the curriculum.
+
+1. Select "Pages" -> "Add New" from the left hand menu.
+ [INSERT NEWPAGE IMAGE]
+2. Give the page a title.
+ [INSERT NOTITLE IMAGE]
+3. Under "Page Attributes" on the right hand side, find the "Parent" dropdown menu.
+ [IMAGE NOPARENT]
+4. Select the appropriate Parent for your swagpath.
+ [IMAGE SELECTINGPARENT]
+ [IMAGE PARENTSELECTED]
+5. Insert the [course] and [/course] shortcodes into the page body.
+ [IMAGE COURSESHORTCODE]
+6. (Optional) If you click the blue "Publish" button and navigate to learning.tunapanda.org, you should find your course listed without a description.
+ [IMAGE EMPTYCOURSE]
+
 
 ## Step 4: Create a description for the swagpath
