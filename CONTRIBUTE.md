@@ -4,8 +4,7 @@ A **swagpath** is a series of learning resources and/or activities (called **swa
 
 [INSERT SCREENSHOT OF SWAGMAP]
 
-To earn the swag points for the "Creating a Usable Swagpath on http://content.tunapanda.org" skill, a player needs to complete the following swagpath:
-
+To earn the swag points for the "Creating a Usable Swagpath on http://content.tunapanda.org" skill, a player needs to complete the following swagpath:for 
 1. Secure an author account.
 2. Upload swagifacts or create them within the site.
 3. Design the swagifacts into a swagpath.
@@ -49,7 +48,7 @@ Next, hover over "H5P Content" on the left hand side and then click "Add New".
 
  ![Upload H5P](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/createh5p.png)
 
-3. Select an H5P swagifact type, for example "[Presentation](https://h5p.org/tutorial-course-presentation)". (There are tutorials for other H5P types available [here](https://h5p.org/documentation/for-authors/tutorials)).
+3. Select an H5P swagifact type, for example "[Course Presentation](https://h5p.org/tutorial-course-presentation)". (There are tutorials for other H5P types available [here](https://h5p.org/documentation/for-authors/tutorials)).
 
  ![Choose a Type](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/h5ptype.png)
 
