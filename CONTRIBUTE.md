@@ -5,10 +5,10 @@ A **swagpath** is a series of learning resources and/or activities (called **swa
 [INSERT SCREENSHOT OF SWAGMAP]
 
 To earn the swag points for the "Creating a Usable Swagpath on http://content.tunapanda.org" skill, a player needs to complete the following swagpath:
-1. Secure an author account.
-2. Upload swagifacts or create them within the site.
-3. Design the swagifacts into a swagpath.
-4. Create a description for the swagpath.
+ 1. Secure an author account.
+ 2. Upload swagifacts or create them within the site.
+ 3. Design the swagifacts into a swagpath.
+ 4. Create a description for the swagpath.
 
 ## Step 1: Securing an author account
 
