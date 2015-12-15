@@ -131,4 +131,4 @@ To create a description for you swagpath you first need to enable the excerpt an
 5. Click the blue "Publish" button on the right hand side.
 6. Go to [learning.tunapanda.org](content.tunapanda.org) to see your course description.
 
- ![Swagpath Description](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/excerptfilled/swagpathdescription.png)
+ ![Swagpath Description](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/swagpathdescription.png)
