@@ -14,7 +14,7 @@ To earn the swag points for the "Creating a Usable Swagpath on [learning.tunapan
 
 To secure an author account please send an email to wp-authors@tunapanda.org with a brief description of why you would like an account and what swagifacts and/or swagpaths you are interested in creating. We will respond within 48 business hours.
 
-In the meantime, you can begin creating H5P swagifacts by either [test driving H5P](https://h5p.org/testdrive-h5p) or [installing H5P on your machine or website](https://h5p.org/installation). The H5P items you create now can be saved and uploaded to [learning.tunapanda.org](http://content.tunapanda.org) later. Full instructions, including Wordpress setup, can be found [here](https://h5p.org/documentation/setup/wordpress)
+In the meantime, you can begin creating H5P swagifacts by either [test driving H5P](https://h5p.org/testdrive-h5p) or [installing H5P on your machine or website](https://h5p.org/installation). The H5P items you create now can be saved and uploaded to [learning.tunapanda.org](http://content.tunapanda.org) later. Full instructions, including Wordpress setup, can be found [here](https://h5p.org/documentation/setup/wordpress).
 
 ## Step 2: Uploading or creating H5P swagifacts
 
@@ -24,11 +24,11 @@ First, head over to http://content.tunapanda.org/wp-admin and login with your Au
 
 ![Wordpress Login](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/logincontentwpadmin.png)
 
-Next, hover over "H5P Content" on the left hand side and then click "Add New".
+### Uploading pre-created H5P swagifacts
+
+Hover over "H5P Content" on the left hand side and then click "Add New".
 
 ![Click on H5P](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/clickh5psmall.png)
-
-### Uploading pre-created H5P swagifacts
 
 1. Select "Upload" on the right hand side.
 
@@ -44,6 +44,10 @@ Next, hover over "H5P Content" on the left hand side and then click "Add New".
 
 ### Creating H5P swagifacts 
 
+Hover over "H5P Content" on the left hand side and then click "Add New".
+
+![Click on H5P](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/clickh5psmall.png)
+
 1. Select "Create" on the right hand side.
 2. Add a Title for your swagifact.
 
@@ -58,13 +62,13 @@ Next, hover over "H5P Content" on the left hand side and then click "Add New".
 
  ![Create a Presentation](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/createpresentation.png)
 
-6. Click "Add New" on the left side again and repeat steps 1-5 as needed.
+6. Click "Add New" on the left side again and repeat steps 1-5 if you would like to create more swagifacts.
 
  ![Add New](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/addnewagain.png)
 
 ## Step 3: Designing the swagifacts into a swagpath
 
-A swagpath is made by creating a new Page in Wordpress, using the [course] and [h5p-course-item] shortcodes to create an ordered list of H5P swagifacts, and placing the swagpath in the appropriate part of the curriculum. Creating swagpaths requires that the the XXXXXX plugin be installed on your Wordpress instance.
+A swagpath is made by creating a new Page in Wordpress, using the [course] and [h5p-course-item] shortcodes to create an ordered list of H5P swagifacts, and placing the swagpath in the appropriate part of the curriculum. Creating swagpaths requires that the XXXXXX plugin be installed on your Wordpress instance.
 
 1. Select "Pages" -> "Add New" from the left hand menu.
 
