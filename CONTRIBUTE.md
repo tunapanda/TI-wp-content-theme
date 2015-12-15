@@ -36,6 +36,7 @@ Next, hover over "H5P Content" on the left hand side and then click "Add New".
 
 2. Add a Title for your swagifact.
 3. Click "Choose File" and select the H5P swagifact you would like to upload.
+
 4. Click the blue "Create" button.
 5. Click "Add New" on the left side again and repeat steps 1-4 as needed.
 
