@@ -111,18 +111,21 @@ A swagpath is made by creating a new Page in Wordpress, using the [course] and [
 To create a description for you swagpath you first need to enable the excerpt and custom field toolbars in Wordpress. We'll show you how now.
 
 1. Click on "Screen Options" in the upper right.
-2. 
+
  ![Click Screen Options](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/clickscreenoptions.png)
 
  ![No Excerpt](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/noexcerpt.png)
 
 2. Select the "Excerpt" box.
+
  ![Select Excerpt](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/selectexcerpt.png)
 
 3. Scroll down to see the "Excerpt" widget.
+
  ![Excerpt](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/excerptwidget.png)
 
 4. Fill in the description for your swagpath.
+
  ![Excerpt Filled](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/excerptfilled.png)
 
 5. Click the blue "Publish" button on the right hand side.
