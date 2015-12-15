@@ -68,7 +68,7 @@ Hover over "H5P Content" on the left hand side and then click "Add New".
 
 ## Step 3: Designing the swagifacts into a swagpath
 
-A swagpath is made by creating a new Page in Wordpress, using the [course] and [h5p-course-item] shortcodes to create an ordered list of H5P swagifacts, and placing the swagpath in the appropriate part of the curriculum. Creating swagpaths requires that the XXXXXX plugin be installed on your Wordpress instance.
+A swagpath is made by creating a new Page in Wordpress, using the [course] and [h5p-course-item] shortcodes to create an ordered list of H5P swagifacts, and placing the swagpath in the appropriate part of the curriculum. Creating swagpaths requires that the [wp-h5p-xapi](https://wordpress.org/plugins/wp-h5p-xapi/) plugin be installed on your Wordpress instance.
 
 1. Select "Pages" -> "Add New" from the left hand menu.
 
