@@ -87,7 +87,7 @@ A swagpath is made by creating a new Page in Wordpress, using the [course] and [
 
  ![Course Shortcode](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/courseshortcode.png)
 
-6. (Optional) If you click the blue "Publish" button and navigate to learning.tunapanda.org, you should find your course listed without a description.
+6. (Optional) If you click the blue "Publish" button and navigate to learning.tunapanda.org, you will find your course listed without a description.
 
  ![Empty Course](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/emptycourse.png)
 
