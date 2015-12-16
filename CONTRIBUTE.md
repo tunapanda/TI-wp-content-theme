@@ -109,7 +109,7 @@ A swagpath is made by creating a new Page in Wordpress, using the [course] and [
 
  ![H5P Course Items](https://github.com/tunapanda/TI-wp-content-theme/blob/master/meta/contribute/h5pcourseitems.png)
 
-10. Click the "Publish" button and check out your swagpath on learning.tunapanda.org!
+10. Click the blue "Publish" (or "Update") button and check out your swagpath on [learning.tunapanda.org](content.tunapanda.org)!
 
 ## Step 4: Create a description for the swagpath
 
