@@ -2,6 +2,10 @@
 <html>
 	<head>
 		<?php wp_head(); ?>
+		<script>
+			THEME_URI='<?php echo get_template_directory_uri(); ?>';
+		</script>
+		<meta name="viewport" content="width=device-width">
 	</head>
 	<body <?php body_class(); ?>>
 		<div id="header">
@@ -14,7 +18,7 @@
 				<?php
 					wp_nav_menu(array(
 						'menu_class'     => 'nav-menu',
-						'theme_location' => 'navigation',					
+						'theme_location' => 'navigation',
 					));
 				?>
 			</div>

@@ -48,6 +48,13 @@
 	function ti_enqueue_scripts() {
 		wp_register_style("ti",get_template_directory_uri()."/style.css");
 		wp_enqueue_style("ti");
+
+		wp_register_script("d3",get_template_directory_uri()."/d3.v3.min.js");
+		wp_register_script("ti-main",get_template_directory_uri()."/main.js");
+
+		wp_enqueue_script("jquery");
+		wp_enqueue_script("d3");
+		wp_enqueue_script("ti-main");
 	}
 
 	add_action('wp_enqueue_scripts','ti_enqueue_scripts');
@@ -248,3 +255,14 @@
 
 	add_action('admin_menu','ti_admin_menu');
 	add_action('admin_init','ti_admin_init');
+
+	register_nav_menu("navigation","Main menu for the site");
+
+	/**
+	 * Render swagmap.
+	 */
+	function ti_swagmap() {
+		return "<div id='swagmapcontainer'></div>";
+	}
+
+	add_shortcode("swagmap","ti_swagmap");

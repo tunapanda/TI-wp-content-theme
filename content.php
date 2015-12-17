@@ -3,7 +3,8 @@
 	
 		<?php
 		//var_dump( $post);
-			if (!is_front_page()){
+//			if (!is_front_page()){
+			if (count($post->ancestors)>0) {
 				echo '<div id="breadcrumbs">';
 				echo '<ul id="breadcrumb">';
 				for ($i = count($post->ancestors)-1; $i >= 0; $i--) {
