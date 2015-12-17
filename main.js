@@ -1,3 +1,5 @@
+console.log("main...");
+
 jQuery(function($) {
 	$(document).ready(function() {
 		if (!$("#swagmapcontainer").length)
@@ -28,7 +30,12 @@ jQuery(function($) {
 			force.size([width, height]).resume();
 		});
 
-		d3.json(THEME_URI + "/swagmapdata.php", function(error, json) {
+		var dataurl = THEME_URI + "/swagmapdata.php";
+		console.log("loading swagmap data from: " + dataurl);
+
+		d3.json(dataurl, function(error, json) {
+			console.log("swagmap data loaded");
+
 			if (error) throw error;
 
 			force

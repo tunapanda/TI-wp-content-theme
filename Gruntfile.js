@@ -16,7 +16,7 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					dest: "wp-content/themes/content_tunapanda_org",
-					src: ["**","!node_modules/**"]
+					src: ["**","!node_modules/**","!meta/**"]
 				}]
 			},
 		}
