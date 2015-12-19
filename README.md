@@ -1,6 +1,11 @@
 # TI-wp-content-theme
 Wordpress theme for [content.tunapanda.org](http://content.tunapanda.org/).
 
+## How's it going?
+
+* [Issue tracking](https://waffle.io/tunapanda/TI-wp-content-theme/)
+* [Metrics](https://www.dasheroo.com/reports/72a578b4d3decfa97208b6bbdd995578/public)
+
 ## Setting up a local environment for hacking
 
 In order to participate in the developemnt, you need to have the following thigs set up on your computer:
