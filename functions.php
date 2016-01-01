@@ -69,7 +69,7 @@
 			"parent"=>$parentId
 		));
 
-		$out="";
+		$out = '<div class="masonry-loop">';
 
 		foreach ($pages as $page) {
 			if ($page->ID!=$parentId) {
@@ -78,7 +78,9 @@
 				));
 			}
 		}
-
+        
+        $out .= '</div>';
+        
 		return $out;
 	}
 
@@ -93,9 +95,9 @@
 		$pages=get_pages(array(
 			"parent"=>$parentId
 		));
-
-		$out="";
-
+        
+		$out = '<div class="masonry-loop">';
+        
 		foreach ($pages as $page) {
 			if ($page->ID!=$parentId) {
 				$out.=render_tpl(__DIR__."/tpl/courselisting.php",array(
@@ -103,6 +105,8 @@
 				));
 			}
 		}
+		
+		$out .= '</div>';
 
 		return $out;
 	}
