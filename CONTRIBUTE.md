@@ -113,7 +113,7 @@ A swagpath is made by creating a new Page in Wordpress, using the [course] and [
 
 ## Step 4: Create a description for the swagpath
 
-To create a description for you swagpath you first need to enable the excerpt and custom field toolbars in Wordpress. We'll show you how now.
+To create a description for you swagpath you first need to enable the excerpt toolbar in Wordpress. We'll show you how now.
 
 1. Click on "Screen Options" in the upper right.
 
