@@ -29,8 +29,20 @@ body {
 #header-logo {
 	position: absolute;
 	height: 60px;
-	left: 80px;
+	left: 40px;
 	top: 10px;
+}
+
+@media only screen and ( max-width: 767px ) /* mobile */{
+	#header-logo{
+        left: 15px;
+    }
+}
+
+@media only screen and ( min-width: 768px ) and ( max-width: 960px ) /* tablet */{
+    #header-logo{
+        left: 30px;
+    }
 }
 
 #header h1 {
@@ -42,6 +54,24 @@ body {
 	left: 170px;
 }
 
+@media only screen and ( max-width: 767px ) /* mobile */{
+	#header h1 {
+        font-size: 16px;
+    	top: 25px;
+    	color: #e0e0e0;
+    	left: 80px;
+    }
+}
+
+@media only screen and ( min-width: 768px ) and ( max-width: 960px ) /* tablet */{
+    #header h1 {
+        font-size: 16px;
+    	top: 25px;
+    	color: #e0e0e0;
+    	left: 80px;
+    }
+}
+
 #header ul {
 	position: absolute;
 	top: 0;
@@ -51,6 +81,19 @@ body {
 	margin-right: 80px;
 	margin-top: 25px;
 }
+
+@media only screen and ( max-width: 767px ) /* mobile */{
+	#header ul{
+        margin-right: 15px;
+    }
+}
+
+@media only screen and ( min-width: 768px ) and ( max-width: 960px ) /* tablet */{
+    #header ul{
+        margin-right: 30px;
+    }
+}
+
 
 #header li {
 	display: inline-block;
@@ -340,10 +383,11 @@ img.coursepresentation {
         background-color: #009900;
         display: block;
         width: 100%;
-        text-indent: 7px;
         left: 0;
-        text-align: center;
         font-size: 18px;
+        text-indent: 7px;
+        text-align: center;
+        text-transform: capitalize;
         
         -moz-border: 5px 5px 0px 0px; 
 		-webkit-border-radius: 5px 5px 0px 0px; 
@@ -411,9 +455,9 @@ img.coursepresentation {
     	padding: 10px;
     	color: #714126;
     	text-decoration: none;
-    	font-weight: bold;
     	text-align: center;
-    	
+    	font-size: 12px;
+    	text-transform: uppercase;
     	border-radius: 3px;
 	}
 	

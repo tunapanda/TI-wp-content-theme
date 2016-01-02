@@ -11,7 +11,8 @@
 		<div id="header">
 			<a href="<?php echo site_url(); ?>">
 				<img id="header-logo" 
-					src="<?php echo get_template_directory_uri(); ?>/img/cropped-tunapandalogo.png"/>
+					src="<?php echo get_template_directory_uri(); ?>/img/cropped-tunapandalogo.png"
+					alt="Tunapanda Logo" />
 			</a>
 			<h1>Knowledgebase</h1>
 			<div class="menu">
