@@ -450,21 +450,21 @@ img.coursepresentation {
 	
 	.listing-info .footer a,
 	.listing-info .footer a:visited{
-    	border: 1px solid #714126;
+    	border: 1px solid #C36E4D;
     	background: white;
-    	padding: 10px;
-    	color: #714126;
+    	padding: 10px 15px;
+    	color: #C36E4D;
     	text-decoration: none;
     	text-align: center;
     	font-size: 12px;
     	text-transform: uppercase;
-    	border-radius: 3px;
+    	border-radius: 1000px;
 	}
 	
 	.listing-info .footer a:focus,
 	.listing-info .footer a:hover{
-        border: 1px solid #714126;
-    	background: #714126;
+        border: 1px solid #C36E4D;
+    	background: #C36E4D;
     	color: white;	
     }
     

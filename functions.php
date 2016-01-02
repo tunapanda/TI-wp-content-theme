@@ -46,7 +46,7 @@
 	 * Scripts and styles.
 	 */
 	function ti_enqueue_scripts() {
-		wp_register_style("ti",get_template_directory_uri()."/style.css?v=3"); //?v=x added to refresh browser cache when stylesheet is updated. 
+		wp_register_style("ti",get_template_directory_uri()."/style.css?v=4"); //?v=x added to refresh browser cache when stylesheet is updated. 
 		wp_enqueue_style("ti");
 
 		wp_register_script("d3",get_template_directory_uri()."/d3.v3.min.js");
