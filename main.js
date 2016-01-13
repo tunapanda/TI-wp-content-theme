@@ -63,8 +63,10 @@ jQuery(function($) {
 					return "swagmap-swag-node"
 				})
 				.on("click", function(d) {
-					if (d.url)
-						window.location.href = d.url;
+					if (d.url) {
+						window.open(d.url);
+						//window.location.href = d.url;
+					}
 				})
 				.call(force.drag);
 
