@@ -1,6 +1,21 @@
 console.log("main...");
 
 jQuery(function($) {
+
+	// Update tickmark image on completed swagifact.
+	$(document).ready(function() {
+		if (typeof H5P !== 'undefined') {
+			H5P.externalDispatcher.on('xAPI', function(event) {
+				var verbId = event.data.statement.verb.id;
+				if (verbId == "http://adlnet.gov/expapi/verbs/completed") {
+					var imgUri = THEME_URI + "/img/completed-logo.png";
+					$("ul.content-tab-list li.selected a img.coursepresentation").attr("src", imgUri);
+				}
+			});
+		}
+	});
+
+	// Initialize swagmap.
 	$(document).ready(function() {
 		if (!$("#swagmapcontainer").length)
 			return;
@@ -129,34 +144,35 @@ jQuery(function($) {
 
 
 // This function makes sure the height of the track listing blocks are all the same height.
-( function( $, window, document, undefined ){
-    'use strict';
- 
-    var s = document.body || document.documentElement, s = s.style;
-    if( s.webkitFlexWrap == '' || s.msFlexWrap == '' || s.flexWrap == '' ) return true;
- 
-    var $list       = $( '.masonry-loop' ),
-        $items      = $list.find( '.track' ),
-        setHeights  = function(){
-            $items.css( 'height', 'auto' );
- 
-            var perRow = Math.floor( $list.width() / $items.width() );
-            if( perRow == null || perRow < 2 ) return true;
- 
-            for( var i = 0, j = $items.length; i < j; i += perRow ){
-                var maxHeight   = 0,
-                    $row        = $items.slice( i, i + perRow );
- 
-                $row.each( function(){
-                    var itemHeight = parseInt( $(this).outerHeight() );
-                    if ( itemHeight > maxHeight ) maxHeight = itemHeight;
-                });
-                $row.css( 'height', maxHeight );
-            }
-        };
- 
-    setHeights();
-    $( window ).on( 'resize', setHeights );
-    $list.find( 'img' ).on( 'load', setHeights );
- 
-})( jQuery, window, document );
+(function($, window, document, undefined) {
+	'use strict';
+
+	var s = document.body || document.documentElement,
+		s = s.style;
+	if (s.webkitFlexWrap == '' || s.msFlexWrap == '' || s.flexWrap == '') return true;
+
+	var $list = $('.masonry-loop'),
+		$items = $list.find('.track'),
+		setHeights = function() {
+			$items.css('height', 'auto');
+
+			var perRow = Math.floor($list.width() / $items.width());
+			if (perRow == null || perRow < 2) return true;
+
+			for (var i = 0, j = $items.length; i < j; i += perRow) {
+				var maxHeight = 0,
+					$row = $items.slice(i, i + perRow);
+
+				$row.each(function() {
+					var itemHeight = parseInt($(this).outerHeight());
+					if (itemHeight > maxHeight) maxHeight = itemHeight;
+				});
+				$row.css('height', maxHeight);
+			}
+		};
+
+	setHeights();
+	$(window).on('resize', setHeights);
+	$list.find('img').on('load', setHeights);
+
+})(jQuery, window, document);

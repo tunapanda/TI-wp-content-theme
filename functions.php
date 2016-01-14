@@ -199,6 +199,9 @@
 		else if (array_key_exists("title", $args))
 			$h5pContent=getH5pContentBy("title",$args["title"]);
 
+		else if (array_key_exists("slug", $args))
+			$h5pContent=getH5pContentBy("slug",$args["slug"]);
+
 		if (!$h5pContent) {
 			$ti_course_items[]=array(
 				"title"=>"Not found",
