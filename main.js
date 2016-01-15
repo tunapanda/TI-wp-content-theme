@@ -1,4 +1,4 @@
-console.log("main...");
+//console.log("main...");
 
 jQuery(function($) {
 
@@ -6,6 +6,9 @@ jQuery(function($) {
 	$(document).ready(function() {
 		if (typeof H5P !== 'undefined') {
 			H5P.externalDispatcher.on('xAPI', function(event) {
+				/*console.log("got xapi");
+				console.log(event.data.statement);*/
+
 				var verbId = event.data.statement.verb.id;
 				if (verbId == "http://adlnet.gov/expapi/verbs/completed") {
 					var imgUri = THEME_URI + "/img/completed-logo.png";

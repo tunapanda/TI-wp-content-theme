@@ -2,6 +2,14 @@
 
 	require_once __DIR__."/utils.php";
 	require_once __DIR__."/xapi.php";
+	require_once __DIR__."/src/utils/ShortcodeUtil.php";
+
+	/**
+	 * Query xAPI to see if a swagpath is completed.
+	 */
+	function isSwagpathCompleted($postId) {
+
+	}
 
 	/**
 	 * Compute the url that H5P uses to save xAPI statements.
@@ -188,10 +196,10 @@
 	}
 
 	/**
-	 * The h5p-course-item short code.
+	 * Get H5P content by shortcode args.
 	 */
-	function ti_h5p_course_item($args) {
-		global $ti_course_items;
+	function getH5pContentByShortcodeArgs($args) {
+		$h5pContent=NULL;
 
 		if (array_key_exists("id", $args))
 			$h5pContent=getH5pContentBy("id",$args["id"]);
@@ -201,6 +209,17 @@
 
 		else if (array_key_exists("slug", $args))
 			$h5pContent=getH5pContentBy("slug",$args["slug"]);
+
+		return $h5pContent;
+	}
+
+	/**
+	 * The h5p-course-item short code.
+	 */
+	function ti_h5p_course_item($args) {
+		global $ti_course_items;
+
+		$h5pContent=getH5pContentByShortcodeArgs($args);
 
 		if (!$h5pContent) {
 			$ti_course_items[]=array(
@@ -273,3 +292,82 @@
 	}
 
 	add_shortcode("swagmap","ti_swagmap");
+
+	/**
+	 * Act on completed xapi statements.
+	 * Save xapi statement for swag if applicable.
+	 */
+	function ti_xapi_post_save($statement) {
+		if ($statement["verb"]["id"]!="http://adlnet.gov/expapi/verbs/completed")
+			return;
+
+		$postPermalink=$statement["context"]["contextActivities"]["grouping"][0]["id"];
+		$postId=url_to_postid($postPermalink);
+		$post=get_post($postId);
+
+		if (!$post)
+			return;
+
+		//error_log("saved complete statement post id: ".$postId);
+
+		$shortcodes=ShortcodeUtil::extractShortcodes($post->post_content);
+		foreach ($shortcodes as $attrs) {
+			if ($attrs["_"]=="h5p-course-item") {
+				$h5pContent=getH5pContentByShortcodeArgs($attrs);
+				if (!isH5pCompleted($h5pContent->id))
+					return;
+			}
+		}
+
+		$provides=get_post_meta($post->ID,"provides");
+
+		$user=wp_get_current_user();
+		if (!$user || !$user->user_email)
+			return;
+
+		$xapi=new Xapi(
+			get_option("ti_xapi_endpoint_url"),
+			get_option("ti_xapi_username"),
+			get_option("ti_xapi_password")
+		);
+
+		foreach ($provides as $provide) {
+			$statement=array(
+				"actor"=>array(
+					"mbox"=>"mailto:".$user->user_email,
+					"name"=>$user->display_name
+				),
+
+				"object"=>array(
+					"objectType"=>"Activity",
+					"id"=>"http://swag.tunapanda.org/".$provide,
+					"definition"=>array(
+						"name"=>array(
+							"en-US"=>$provide
+						)
+					)
+				),
+
+				"verb"=>array(
+					"id"=>"http://adlnet.gov/expapi/verbs/completed"
+				),
+
+				"context"=>array(
+					"contextActivities"=>array(
+						"category"=>array(
+							array(
+								"objectType"=>"Activity",
+								"id"=>"http://swag.tunapanda.org/"
+							)
+						)
+					)
+				),
+			);
+
+			$xapi->putStatement($statement);
+
+			//error_log("got swag: ".$provide);
+		}
+	}
+
+	add_action("h5p-xapi-post-save","ti_xapi_post_save");
