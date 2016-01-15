@@ -89,7 +89,11 @@ jQuery(function($) {
 				.call(force.drag);
 
 			node.append("circle")
-				.attr("r", 12);
+				.attr("r", 10)
+				.attr("class", function(d) {
+					if (d.completed)
+						return "completed";
+				});
 
 			node.append("text")
 				.attr("dy", ".35em")

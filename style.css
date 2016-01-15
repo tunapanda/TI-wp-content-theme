@@ -133,7 +133,14 @@ body {
 }
 
 .swagmap-swag-node circle {
+	fill-opacity: 0;
+	stroke: #53ad35;
+	stroke-width: 5px;
+}
+
+.swagmap-swag-node circle.completed {
 	fill: #53ad35;
+	fill-opacity: 1;
 }
 
 .swagmap-swagpath-node circle {

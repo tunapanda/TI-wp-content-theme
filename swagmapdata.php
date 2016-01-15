@@ -1,7 +1,34 @@
 <?php
 
 require_once __DIR__."/WpUtil.php";
+require_once __DIR__."/xapi.php";
 require_once WpUtil::getWpLoadPath();
+
+$completedSwag=array();
+
+$user=wp_get_current_user();
+if ($user && $user->user_email) {
+	$xapi=new Xapi(
+		get_option("ti_xapi_endpoint_url"),
+		get_option("ti_xapi_username"),
+		get_option("ti_xapi_password")
+	);
+
+	$statements=$xapi->getStatements(array(
+		"agentEmail"=>$user->user_email,
+		"activity"=>"http://swag.tunapanda.org/",
+		"verb"=>"http://adlnet.gov/expapi/verbs/completed",
+		"related_activities"=>"true"
+	));
+
+	foreach ($statements as $statement) {
+		$objectId=$statement["object"]["id"];
+		$swag=str_replace("http://swag.tunapanda.org/","",$objectId);
+
+		if (!in_array($swag,$completedSwag))
+			$completedSwag[]=$swag;
+	}
+}
 
 $q=new WP_Query(array(
 	"post_type"=>"page",
@@ -39,10 +66,15 @@ foreach ($swagpaths as $swagpath) {
 
 $firstSwagIndex=sizeof($data["nodes"]);
 foreach ($swags as $swag) {
-	$data["nodes"][]=array(
+	$swagData=array(
 		"name"=>$swag,
 		"type"=>"swag"
 	);
+
+	if (in_array($swag,$completedSwag))
+		$swagData["completed"]=TRUE;
+
+	$data["nodes"][]=$swagData;
 }
 
 $swagpathIndex=0;
@@ -65,48 +97,3 @@ foreach ($swagpaths as $swagpath) {
 }
 
 echo json_encode($data);
-
-//echo "hello: ".sizeof($swagpaths);
-/*$data=array(
-	"nodes"=>array(
-		array(
-			"name"=>"Inkscape",
-			"type"=>"swagpath"
-		),
-
-		array(
-			"name"=>"basic-inkscape",
-			"type"=>"swag"
-		),
-
-		array(
-			"name"=>"Introduction to javascript",
-			"type"=>"swagpath"
-		),
-
-		array(
-			"name"=>"basic-javascript",
-			"type"=>"swag"
-		),
-
-		array(
-			"name"=>"Game programming",
-			"type"=>"swagpath"
-		),
-
-		array(
-			"name"=>"game-programming",
-			"type"=>"swag"
-		)
-	),
-
-	"links"=>array(
-		array("source"=>0, "target"=>1),
-		array("source"=>2, "target"=>3),
-		array("source"=>1, "target"=>4),
-		array("source"=>3, "target"=>4),
-		array("source"=>4, "target"=>5)
-	)
-);
-
-echo json_encode($data);*/
