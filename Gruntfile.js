@@ -5,9 +5,9 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 
 		ftpUploadTask: {
-			content_tunapanda_org: {
+			learning_tunapanda_org: {
 				options: {
-					user: "contentdeploy",
+					user: "learningdeploy",
 					password: process.env.CONTENT_TUNAPANDA_PASSWORD,
 					host: "thespeakeasytimes.com",
 					checksumfile: "_upload_checksum_file.json"
