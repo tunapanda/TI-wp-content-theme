@@ -5,6 +5,54 @@
  */
 class ShortcodeUtil {
 
+	public static function strposAny($subject, $tokens) {
+		$len=strlen($subject);
+
+		for ($i=0; $i<strlen($tokens); $i++) {
+			$p=strpos($subject,$tokens[$i]);
+			if ($p!==FALSE && $p<$len)
+				$len=$p;
+		}
+
+		return $len;
+	}
+
+	/**
+	 * Tokenize shortcodes.
+	 */
+	public static function tokenize($text) {
+		$tokens=array();
+		$text=trim($text);
+
+		while (strlen($text)) {
+			$text=trim($text);
+
+			switch ($text[0]) {
+				case "[":
+				case "]":
+				case "=":
+					$tokens[]=$text[0];
+					$text=substr($text,1);
+					break;
+
+				case "'":
+				case '"':
+					$p=ShortcodeUtil::strposAny(substr($text,1),"\"'");
+					$tokens[]=substr($text,1,$p);
+					$text=substr($text,$p+2);
+					break;
+
+				default:
+					$p=ShortcodeUtil::strposAny($text," \n\t\"'[]=");
+					$tokens[]=substr($text,0,$p);
+					$text=substr($text,$p);
+					break;
+			}
+		}
+
+		return $tokens;
+	}
+
 	/**
 	 * Extract shortcodes from text.
 	 */
@@ -13,29 +61,33 @@ class ShortcodeUtil {
 		preg_match_all("(\[.*?\])",$text,$matches);
 
 		foreach ($matches[0] as $match) {
-			$attrs=array();
-			$parts=preg_split("/[\s]+/",$match);
+			$tokens=ShortcodeUtil::tokenize($match);
 
-			for ($i=0; $i<sizeof($parts); $i++) {
-				$parts[$i]=str_replace("[","",$parts[$i]);
-				$parts[$i]=str_replace("]","",$parts[$i]);
+			if ($tokens[0]!="[")
+				throw new Exception("shortcode parse error");
+
+			if ($tokens[sizeof($tokens)-1]!="]")
+				throw new Exception("shortcode parse error");
+
+			$tokens=array_slice($tokens,1,sizeof($tokens)-2);
+			$attr=array();
+			$attr["_"]=$tokens[0];
+			$tokens=array_slice($tokens,1);
+
+			$i=0;
+			while ($i<sizeof($tokens)) {
+				if ($tokens[$i+1]=="=") {
+					$attr[$tokens[$i]]=$tokens[$i+2];
+					$i+=3;
+				}
+
+				else {
+					$attr[$tokens[$i]]=TRUE;
+					$i++;
+				}
 			}
 
-			$attrs["_"]=$parts[0];
-			array_shift($parts);
-
-			foreach ($parts as $part) {
-				$keyvalue=explode("=",$part);
-				$key=$keyvalue[0];
-				$value=$keyvalue[1];
-
-				$value=str_replace("'","",$value);
-				$value=str_replace('"',"",$value);
-
-				$attrs[$key]=$value;
-			}
-
-			$res[]=$attrs;
+			$res[]=$attr;
 		}
 
 		return $res;

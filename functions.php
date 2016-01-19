@@ -314,8 +314,13 @@
 		foreach ($shortcodes as $attrs) {
 			if ($attrs["_"]=="h5p-course-item") {
 				$h5pContent=getH5pContentByShortcodeArgs($attrs);
-				if (!isH5pCompleted($h5pContent->id))
+				if (!$h5pContent)
+					error_log("H5P not found... ".print_r($attrs,TRUE));
+
+				if (!isH5pCompleted($h5pContent->id)) {
+					//error_log("not yet complete, returning: ".$h5pContent->id);
 					return;
+				}
 			}
 		}
 
