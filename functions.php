@@ -3,13 +3,8 @@
 	require_once __DIR__."/utils.php";
 	require_once __DIR__."/xapi.php";
 	require_once __DIR__."/src/utils/ShortcodeUtil.php";
-
-	/**
-	 * Query xAPI to see if a swagpath is completed.
-	 */
-	function isSwagpathCompleted($postId) {
-
-	}
+	require_once __DIR__."/src/swag/SwagUser.php";
+	require_once __DIR__."/src/swag/SwagPost.php";
 
 	/**
 	 * Compute the url that H5P uses to save xAPI statements.
@@ -125,12 +120,11 @@
 	 * Handle the course shortcode.
 	 */
 	function ti_course($args, $content) {
-		$post=get_post();
-		//print_r($post);
-		//print_r(get_post_meta($post->ID));
-
 		global $ti_course_items;
 
+		$post=get_post();
+		$swagPost=new SwagPost($post);
+		$swagUser=new SwagUser(wp_get_current_user());
 		$ti_course_items=array();
 		do_shortcode($content);
 
@@ -138,7 +132,34 @@
 		if (array_key_exists("tab",$_REQUEST) && $_REQUEST["tab"])
 			$tab=$_REQUEST["tab"];
 
-		$s="<div class='content-tab-wrapper'>";
+		$s="";
+
+		if (!$swagUser->isSwagCompleted($swagPost->getRequiredSwag())) {
+			$uncollected=$swagUser->getUncollectedSwag($swagPost->getRequiredSwag());
+			$uncollectedFormatted=array();
+
+			foreach ($uncollected as $swag)
+				$uncollectedFormatted[]="<b>$swag</b>";
+
+			$swagpaths=SwagPost::getPostsProvidingSwag($uncollected);
+			$swagpathsFormatted=array();
+
+			foreach ($swagpaths as $swagpath)
+				$swagpathsFormatted[]=
+					"<a href='".get_post_permalink($swagpath->ID)."'>".
+					$swagpath->post_title.
+					"</a>";
+
+			$s.="<div class='course-info'>";
+			$s.="In order to get the most out of this swagpath, it is recommended that you ";
+			$s.="first collect these swag: ";
+			$s.=join(", ",$uncollectedFormatted);
+			$s.=". You can collect them by following these swagpaths: ";
+			$s.=join(", ",$swagpathsFormatted);
+			$s.=".</div>";
+		}
+
+		$s.="<div class='content-tab-wrapper'>";
 		$s.="<ul class='content-tab-list'>";
 
 		$index=0;

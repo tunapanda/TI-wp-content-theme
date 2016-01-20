@@ -296,6 +296,20 @@ img.coursepresentation {
 }
 */
 
+.course-info {
+	background: #fff0a0;
+	padding: 10px;
+	margin-bottom: 20px;
+	border: 1px solid #808000;
+	border-radius: 5px;
+}
+
+.course-info a {
+	font-weight: bold;
+	color: #008000;
+	text-decoration: none;
+}
+
 .masonry-loop{
     
 	display: -webkit-box;

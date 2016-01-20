@@ -2,33 +2,11 @@
 
 require_once __DIR__."/WpUtil.php";
 require_once __DIR__."/xapi.php";
+require_once __DIR__."/src/swag/SwagUser.php";
 require_once WpUtil::getWpLoadPath();
 
-$completedSwag=array();
-
-$user=wp_get_current_user();
-if ($user && $user->user_email) {
-	$xapi=new Xapi(
-		get_option("ti_xapi_endpoint_url"),
-		get_option("ti_xapi_username"),
-		get_option("ti_xapi_password")
-	);
-
-	$statements=$xapi->getStatements(array(
-		"agentEmail"=>$user->user_email,
-		"activity"=>"http://swag.tunapanda.org/",
-		"verb"=>"http://adlnet.gov/expapi/verbs/completed",
-		"related_activities"=>"true"
-	));
-
-	foreach ($statements as $statement) {
-		$objectId=$statement["object"]["id"];
-		$swag=str_replace("http://swag.tunapanda.org/","",$objectId);
-
-		if (!in_array($swag,$completedSwag))
-			$completedSwag[]=$swag;
-	}
-}
+$swagUser=new SwagUser(wp_get_current_user());
+$completedSwag=$swagUser->getCompletedSwag();
 
 $q=new WP_Query(array(
 	"post_type"=>"page",
