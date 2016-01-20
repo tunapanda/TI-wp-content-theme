@@ -99,10 +99,11 @@
 		$q=new WP_Query(array(
 			"post_type"=>"any",
 			"post_parent"=>$parentId,
+			"posts_per_page"=>-1
 		));
 
 		$pages=$q->get_posts();
-        
+
 		$out = '<div class="masonry-loop">';
 
 		$unpreparedCount=0;
