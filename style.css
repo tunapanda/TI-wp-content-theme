@@ -296,12 +296,35 @@ img.coursepresentation {
 }
 */
 
+.after-info {
+	background: #e0e0e0;
+	width: 100%;
+	padding: 10px;
+	border-radius: 6px;
+	color: #404040;
+	height: 100px;
+	text-align: center;
+	padding-top: 50px;
+}
+
+.after-info a {
+	color: #404040;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.after.listing {
+	background: #e0e0e0;
+}
+
 .course-info {
 	background: #fff0a0;
 	padding: 10px;
 	margin-bottom: 20px;
 	border: 1px solid #808000;
 	border-radius: 5px;
+	vertical-align: center;
+	height: 100%;
 }
 
 .course-info a {
@@ -539,6 +562,10 @@ img.coursepresentation {
         margin-bottom: 25px;
     }
 
+}
+
+.course.listing.unprepared {
+	display: none;
 }
 
 

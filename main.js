@@ -2,6 +2,15 @@
 
 jQuery(function($) {
 
+	// Button to show swagpaths that the user is not yet prepared for.
+	$(document).ready(function() {
+		$(".view-unprepared").click(function() {
+			$(".unprepared").removeClass("unprepared");
+			$(".after.listing").hide();
+			return false;
+		});
+	});
+
 	// Update tickmark image on completed swagifact.
 	$(document).ready(function() {
 		if (typeof H5P !== 'undefined') {

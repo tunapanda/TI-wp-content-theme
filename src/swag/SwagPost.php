@@ -20,6 +20,13 @@ class SwagPost {
 	}
 
 	/**
+	 * Get required swag.
+	 */
+	public function getProvidedSwag() {
+		return get_post_meta($this->post->ID,"provides");
+	}
+
+	/**
 	 * Get post.
 	 */
 	public function getPost() {

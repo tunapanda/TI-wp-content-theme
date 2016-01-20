@@ -1,4 +1,4 @@
-<div class="course listing">
+<div class="course listing <?php if (!$prepared) echo "unprepared"; ?>">
     <div class="listing-info">
     	<div class="header">
     		<div class="title">

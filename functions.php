@@ -93,22 +93,43 @@
 	 * Handle the track-listing short code.
 	 */
 	function ti_course_listing() {
+		$swagUser=new SwagUser(wp_get_current_user());
 		$parentId=get_the_ID();
 
-		$pages=get_pages(array(
-			"parent"=>$parentId
+		$q=new WP_Query(array(
+			"post_type"=>"any",
+			"post_parent"=>$parentId,
 		));
+
+		$pages=$q->get_posts();
         
 		$out = '<div class="masonry-loop">';
+
+		$unpreparedCount=0;
         
 		foreach ($pages as $page) {
 			if ($page->ID!=$parentId) {
+				$swagPost=new SwagPost($page);
+				$prepared=$swagUser->isSwagCompleted($swagPost->getRequiredSwag());
+				$completed=$swagUser->isSwagCompleted($swagPost->getProvidedSwag());
+
+				if (!$prepared)
+					$unpreparedCount++;
+
 				$out.=render_tpl(__DIR__."/tpl/courselisting.php",array(
-					"page"=>$page
+					"page"=>$page,
+					"prepared"=>$prepared,
+					"completed"=>$completed
 				));
 			}
 		}
-		
+
+		if ($unpreparedCount) {
+			$out.=render_tpl(__DIR__."/tpl/afterlisting.php",array(
+				"unprepared"=>$unpreparedCount
+			));
+		}
+
 		$out .= '</div>';
 
 		return $out;
