@@ -651,3 +651,105 @@ img.coursepresentation {
 #breadcrumb li a:active:after {
 	border-left-color: #000000; 
 }
+
+/****wp profile builder override***/
+.wppb-user-forms,
+.wppb-user-forms *{
+	-webkit-box-sizing: border-box !important; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box !important;    /* Firefox, other Gecko */
+	box-sizing: border-box !important;         /* Opera/IE 8+ */
+}
+.wppb-user-forms {
+    width: 500px;
+    margin: 60px auto 30px;
+    padding: 10px;
+    position: relative; 
+    box-shadow: 
+        0 0 1px rgba(0, 255, 0, 0.3), 
+        0 3px 7px rgba(0, 255, 0, 0.3), 
+        inset 0 1px rgba(255,255,255,1),
+        inset 0 -3px 2px rgba(0,0,0,0.25);
+    border-radius: 5px;
+    background: linear-gradient(#C36E4D, #ffffff 100%);
+}
+.wppb-user-forms .wppb-form-field{
+    position: relative; 
+}
+.wppb-user-forms input[type=text],
+.wppb-user-forms input[type=password] {
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    width: 100%;
+    padding: 10px 18px 10px 45px;
+    border: none; 
+    border-radius: 3px;
+    background: #f9f9f9;
+    color: #777;
+    transition: color 0.3s ease-out;
+}
+.wppb-user-forms .submit {
+    background: ##C36E4D;
+     box-shadow: 
+        0 0 2px rgba(0,255,0,0.1),
+        0 3px 2px rgba(0,255,0,0.1),
+        inset 0 -3px 2px rgba(0,255,0,0.2);
+ 
+}
+.wppb-user-forms input[type="text"],
+.wppb-user-forms input[type="email"],
+.wppb-user-forms input[type="url"],
+.wppb-user-forms input[type="password"],
+.wppb-user-forms input[type="search"] {
+	padding: 3px;
+}
+.wppb-user-forms textarea {
+	overflow: auto; 
+	padding-left: 3px;
+	vertical-align: top;
+	width: 100%;
+}
+.wppb-user-forms ul{
+	max-width:900px;
+	list-style:none;
+	margin-left:0;
+	margin-right:0;
+    padding-left:0;
+    padding-right:0;
+}
+.wppb-user-forms ul li{
+    list-style:none;
+}
+.wppb-user-forms ul li,
+#wppb-login-wrap p,
+#select_user_to_edit_form p{
+	overflow:hidden;
+	margin:0;
+	padding-bottom:14px;
+}
+.wppb-form-field label,
+#wppb-login-wrap .login-username label,
+#wppb-login-wrap .login-password label{
+	width:30%;
+	float:left;
+	min-height:1px;
+}
+.wppb-form-field input,
+.wppb-form-field input[type="text"], .wppb-form-field input[type="email"], .wppb-form-field input[type="url"], .wppb-form-field input[type="password"], .wppb-form-field input[type="search"],
+.wppb-form-field select,
+.wppb-form-field textarea,
+.wppb-checkboxes,
+.wppb-radios,
+#wppb-login-wrap .login-username input,
+#wppb-login-wrap .login-password input{
+	width:69.9%;
+	float:left;
+}
+.wppb-user-forms .wppb-wysiwyg .wp-editor-wrap .wp-editor-tabs *{
+    box-sizing: content-box !important;
+}
+.wppb-user-forms .wp-editor-wrap input {
+    float: none;
+    width: auto;
+}
