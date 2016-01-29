@@ -2,7 +2,7 @@
 Theme Name: learning.tunapanda.org
 Theme Description: Theme for learning.tunapanda.org
 GitHub Theme URI: tunapanda/TI-wp-content-theme
-Version: 0.0.2
+Version: 0.0.3
 */
 
 /**** General ****/
@@ -122,6 +122,32 @@ body {
 
 #header .menu li {
 	display: inline-block;
+}
+
+/**** Swag. ****/
+.swag-badge-container {
+	display: inline-block;
+	position: relative;
+	width: 200px;
+	height: 200px;
+	text-align: center;
+}
+
+.swag-badge-image {
+	width: 200px;
+}
+
+.swag-badge-label {
+	top: 100px;
+	margin-left: 45px;
+	width: 100px;
+	position: absolute;
+	font-size: 20px;
+	font-weight: bold;
+	background: #ff8040;
+	border-radius: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 /**** Swagmap. ****/

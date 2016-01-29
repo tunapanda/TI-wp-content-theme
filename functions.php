@@ -419,3 +419,23 @@
 	}
 
 	add_action("h5p-xapi-post-save","ti_xapi_post_save");
+
+	function ti_my_swag() {
+		$swagUser=new SwagUser(wp_get_current_user());
+		$completedSwag=$swagUser->getCompletedSwag();
+
+		$baseuri=get_template_directory_uri();
+
+		$out="";
+
+		foreach ($completedSwag as $swag) {
+			$out.="<div class='swag-badge-container'>\n";
+			$out.="<img class='swag-badge-image' src='$baseuri/img/badge.png'>\n";
+			$out.="<div class='swag-badge-label'>$swag</div>\n";
+			$out.="</div>\n";
+		}
+
+		return $out;
+	}
+
+	add_shortcode("my-swag","ti_my_swag");
