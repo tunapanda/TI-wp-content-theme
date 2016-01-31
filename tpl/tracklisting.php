@@ -11,7 +11,8 @@
     	</div>
         
         <div class="footer">
-    	    <a href="<?php echo get_page_link($page->ID); ?>">Visit Track</a>
+            <span class="list-count"><?php echo $page->swagpaths; ?> Swagpaths</span>
+    	    <span class="list-link"><a href="<?php echo get_page_link($page->ID); ?>">Visit Track</a></span>
         </div>
     </div>
 </div>

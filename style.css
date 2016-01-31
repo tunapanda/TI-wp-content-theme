@@ -501,28 +501,43 @@ img.coursepresentation {
 	    display: -moz-box;
 	    display: -ms-flexbox;
 	    display: -webkit-flex;
-	    display: flex;
+	    display: box;
 		padding: 15px;
+		
 		-webkit-box-flex: 1;
 	    -moz-box-flex: 1;
 	    -webkit-flex: 1 0 auto;
 	    -ms-flex: 1 0 auto;
-	    flex: 1 0 auto;
+        flex: 1 0 auto;
+	    
 	    -webkit-align-self: auto;
 	    -ms-flex-item-align: auto;
 	    align-self: auto;
-		
-		-webkit-box-align: end;
-	    -moz-box-align: end;
-	    -webkit-align-items: flex-end;
-	    -ms-flex-align: end;
-	    align-items: flex-end;
-		
-		-webkit-box-pack: center;
-	    -moz-box-pack: center;
-	    -webkit-justify-content: center;
-	    -ms-flex-pack: center;
-	    justify-content: center;
+        
+        
+        display: -webkit-box;
+    	display: -moz-box;
+    	display: box;
+    
+    	-webkit-box-orient: vertical;
+    	-moz-box-orient: vertical;
+    	box-orient: vertical;
+    
+    	-webkit-box-pack: end;
+    	-moz-box-pack: end;
+    	box-pack: end;
+    
+    	-webkit-box-direction: normal;
+    	-moz-box-direction: normal;
+    	box-direction: normal;
+    
+    	-webkit-box-align: center;
+    	-moz-box-align: center;
+    	box-align: center;
+    	
+    	align-content: center;
+    	    
+	    text-align: center;
 	}
 	
 	.listing-info .footer a,
@@ -559,10 +574,42 @@ img.coursepresentation {
         border-color: #88C83C;
     }
     
-    .course .listing-info{http://ti.dev/courses/coding/
-        border-color: #88C83C;
+
+    .listing-info .list-count,
+    .listing-info .list-link{        
+        display: -webkit-box;
+	    display: -moz-box;
+	    display: -ms-flexbox;
+	    display: -webkit-flex;
+	    display: flex;
+		
+		-webkit-box-direction: normal;
+	    -moz-box-direction: normal;
+	    -webkit-box-orient: vertical;
+	    -moz-box-orient: vertical;
+	    -webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	    flex-direction: column;
+	    
+	    -webkit-box-ordinal-group: 1;
+    	-moz-box-ordinal-group: 1;
+    	box-ordinal-group: 1;
+    
+    	-webkit-box-flex: 0;
+    	-moz-box-flex: 0;
+    	box-flex: 0;
+    	
+    	-webkit-box-align: center;
+    	-moz-box-align: center;
+    	box-align: center;
+
     }
-	
+    
+    .listing-info .list-count{
+        padding: 10px;
+        font-weight: bold;
+    }
+
 
 @media only screen and ( max-width: 480px ) /* mobile */{
 	.listing{
