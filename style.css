@@ -153,7 +153,13 @@ body {
 /**** Swagmap. ****/
 #swagmapcontainer {
 	width: 100%;
-	/*background: #00ff00;*/
+	float:left;
+	background: #D3D3D3;
+}
+#swag_description_container{
+	position:bottom;
+	margin-top: 0%;
+	background:#ffffff;
 }
 
 .swagmap-link {

@@ -332,10 +332,15 @@
 	 * Render swagmap.
 	 */
 	function ti_swagmap() {
-		return "<div id='swagmapcontainer'></div>";
-	}
+		return "<div id='swagmapcontainer'>
+		<div id='swag_description_container'>A swagmap is gamified display of performance. The green hollow nodes indicate the swagpath is not completed or attempted while non-hollow green nodes indicate the swagpaths is completed and questions answered.
+		</div>
+		
+		</div>";
 
+	}
 	add_shortcode("swagmap","ti_swagmap");
+	
 
 	/**
 	 * Act on completed xapi statements.
