@@ -2,7 +2,7 @@
 Theme Name: learning.tunapanda.org
 Theme Description: Theme for learning.tunapanda.org
 GitHub Theme URI: tunapanda/TI-wp-content-theme
-Version: 0.0.6
+Version: 0.0.7
 */
 
 /**** General ****/
@@ -335,6 +335,12 @@ img.coursepresentation {
 }
 */
 
+img.course-completed {
+	position: absolute;
+	right: 10px;
+	top: 60px;
+}
+
 .after-info {
 	background: #e0e0e0;
 	width: 100%;
@@ -391,6 +397,7 @@ img.coursepresentation {
     
 }
     .listing{            
+    	position: relative;
     	display: -webkit-box;
 	    display: -moz-box;
 	    display: -ms-flexbox;
