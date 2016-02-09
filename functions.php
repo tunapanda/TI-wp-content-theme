@@ -115,6 +115,9 @@
 				$prepared=$swagUser->isSwagCompleted($swagPost->getRequiredSwag());
 				$completed=$swagUser->isSwagCompleted($swagPost->getProvidedSwag());
 
+				if (!$swagPost->getProvidedSwag())
+					$completed=FALSE;
+
 				if (!$prepared)
 					$unpreparedCount++;
 
