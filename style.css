@@ -2,7 +2,7 @@
 Theme Name: learning.tunapanda.org
 Theme Description: Theme for learning.tunapanda.org
 GitHub Theme URI: tunapanda/TI-wp-content-theme
-Version: 0.0.9
+Version: 0.0.10
 */
 
 /**** General ****/
@@ -753,17 +753,17 @@ img.course-completed {
 	box-sizing: border-box !important;         /* Opera/IE 8+ */
 }
 .wppb-user-forms {
-    width: 500px;
-    margin: 60px auto 30px;
-    padding: 10px;
+    max-width: 500px;
+    margin: 20px;
+    padding: 20px;
     position: relative; 
-    box-shadow: 
+    /*box-shadow: 
         0 0 1px rgba(0, 255, 0, 0.3), 
         0 3px 7px rgba(0, 255, 0, 0.3), 
         inset 0 1px rgba(255,255,255,1),
-        inset 0 -3px 2px rgba(0,0,0,0.25);
+        inset 0 -3px 2px rgba(0,0,0,0.25);*/
     border-radius: 5px;
-    background: linear-gradient(#C36E4D, #ffffff 100%);
+    /*background: linear-gradient(#C36E4D, #ffffff 100%);*/
 }
 .wppb-user-forms .wppb-form-field{
     position: relative; 
@@ -782,14 +782,7 @@ img.course-completed {
     color: #777;
     transition: color 0.3s ease-out;
 }
-.wppb-user-forms .submit {
-    background: ##C36E4D;
-     box-shadow: 
-        0 0 2px rgba(0,255,0,0.1),
-        0 3px 2px rgba(0,255,0,0.1),
-        inset 0 -3px 2px rgba(0,255,0,0.2);
- 
-}
+
 .wppb-user-forms input[type="text"],
 .wppb-user-forms input[type="email"],
 .wppb-user-forms input[type="url"],
@@ -797,6 +790,18 @@ img.course-completed {
 .wppb-user-forms input[type="search"] {
 	padding: 3px;
 }
+
+.wppb-user-forms input[type="text"]:focus,
+.wppb-user-forms input[type="email"]:focus,
+.wppb-user-forms input[type="url"]:focus,
+.wppb-user-forms input[type="password"]:focus,
+.wppb-user-forms input[type="search"]:focus {
+	border: 1px solid #009900;
+	outline:none;
+	background: white;
+	color: #009900;
+}
+
 .wppb-user-forms textarea {
 	overflow: auto; 
 	padding-left: 3px;
@@ -829,7 +834,11 @@ img.course-completed {
 	min-height:1px;
 }
 .wppb-form-field input,
-.wppb-form-field input[type="text"], .wppb-form-field input[type="email"], .wppb-form-field input[type="url"], .wppb-form-field input[type="password"], .wppb-form-field input[type="search"],
+.wppb-form-field input[type="text"], 
+.wppb-form-field input[type="email"], 
+.wppb-form-field input[type="url"], 
+.wppb-form-field input[type="password"], 
+.wppb-form-field input[type="search"],
 .wppb-form-field select,
 .wppb-form-field textarea,
 .wppb-checkboxes,
@@ -845,4 +854,101 @@ img.course-completed {
 .wppb-user-forms .wp-editor-wrap input {
     float: none;
     width: auto;
+}
+
+.login-remember label,
+.login-submit .button-primary,
+.form-submit .button,
+.wppb-send-credentials-checkbox label{
+    margin-left: 30%;
+}
+
+@media only screen and ( max-width: 1800px ) /* mobile */{
+	.login-remember label,
+    .login-submit .button-primary,
+    .form-submit .button,
+    .wppb-send-credentials-checkbox label{
+        margin-left: 0%;
+    }
+    
+    .wppb-form-field input,
+    .wppb-form-field input[type="text"], 
+    .wppb-form-field input[type="email"], 
+    .wppb-form-field input[type="url"], 
+    .wppb-form-field input[type="password"], 
+    .wppb-form-field input[type="search"],
+    .wppb-form-field select,
+    .wppb-form-field textarea,
+    .wppb-checkboxes,
+    .wppb-radios,
+    #wppb-login-wrap .login-username input,
+    #wppb-login-wrap .login-password input{
+    	width:100% !important;
+    	float:left;
+    }
+}
+
+/**** Forms ****/
+.button-primary, .button {
+    border: 1px solid #009900;
+	background: white;
+	padding: 10px 15px;
+	color: #009900;
+	text-decoration: none;
+	text-align: center;
+	font-size: 12px;
+	text-transform: uppercase;
+	border-radius: 1000px; 
+	cursor: pointer;  
+}
+
+.button-primary:hover,
+.button-primary:focus,
+.button:hover, 
+.button:focus{
+    border: 1px solid #009900;
+	background: #009900;
+	color: white;	
+}
+
+.button-primary:active,
+.button:active{
+    background: #008b00;
+	color: #97e394;	
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.7) inset;
+}
+
+.button-secondary {
+    border: 1px solid #C36E4D;
+	background: white;
+	padding: 10px 15px;
+	color: #C36E4D;
+	text-decoration: none;
+	text-align: center;
+	font-size: 12px;
+	text-transform: uppercase;
+	border-radius: 1000px; 
+	cursor: pointer;  
+}
+
+.button-secondary:hover,
+.button-secondary:focus{
+    border: 1px solid #C36E4D;
+	background: #C36E4D;
+	color: white;	
+}
+
+.button-secondary:active{
+    background: #714126;
+	color: #a77354;	
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.7) inset;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus {
+    border-color: #009900;
+    outl
 }
