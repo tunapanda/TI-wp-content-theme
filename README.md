@@ -8,22 +8,29 @@ Wordpress theme for [content.tunapanda.org](http://content.tunapanda.org/).
 
 ## Plugins
 
-We are using these plugins
+We are using these plugins from the wordpress plugin repositories
 
-* H5P
+* H5P (to install/update h5p content types follow the instructions [here](https://h5p.org/update-all-content-types))
 * wp-h5p-xapi
-* remote-sync
 * tabby-responsive-tabs
 * profile-builder
 * logged-in-user-shortcode
+* wpMandrill (mail server, optional)
+ 
+We are also using [github updater](https://github.com/afragen/github-updater) for some plugins
+
+Clone the github-updater repository and copy the plugin to your wordpress plugins directory. 
+Go to Settings > GitHub Updater > Install Plugin and enter the url for the following plugins
+
+* [tabby-cookie](https://github.com/tunapanda/tabby-cookie)
+* [wp-remote-sync](https://github.com/tunapanda/wp-remote-sync)
+* [Dasheroo KPIs](https://github.com/tunapanda/wp-dasheroo-kpis) (optional)
 
 ## Setting up a local environment for hacking
 
 In order to participate in the developemnt, you need to have the following thigs set up on your computer:
 
  * Wordpress (This implies a webserver, e.g. Apache, and a database server, e.g. MySql).
- * NodeJS and NPM.
- * Grunt (install with `npm install -g grunt grunt-cli`)
 
 Then, clone this repository and put it in your Wordpress themes folder. If you prefer, you can clone it to somewhere else on your local machine as symlink it from the themes folder. 
 
@@ -39,20 +46,6 @@ Important: After you clone and install the theme on your machine, you will need 
 
 -<img src="https://raw.githubusercontent.com/tunapanda/TI-wp-content-theme/master/activate_lead.png">
 
-## Deploying
-
-There is a deploy script that can upload your changes to content.tunapanda.org. In order to use it, it first needs a bit of installation.
-
-Inside the cloned folder, run:
-```
-npm install
-```
-In order to install some dependencies required for the deployment script. Each time you want to deploy onto the server, do:
-
-```
-export CONTENT_TUNAPANDA_PASSWORD=<the_deployment_password_that_you_need_to_ask_someone_for>
-grunt ftpUploadTask
-```
 
 Important! Remember to always do:
 
