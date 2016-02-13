@@ -9,7 +9,7 @@ require_once __DIR__."/Swag.php";
 class SwagPost {
 
 	private $swagPostItems;
-	private $relatedStatements;
+	private $relatedStatementsByEmail;
 
 	/**
 	 * Construct.
@@ -17,6 +17,7 @@ class SwagPost {
 	public function __construct($post) {
 		$this->post=$post;
 		$this->swagPostItems=NULL;
+		$this->relatedStatementsByEmail=array();
 	}
 
 	/**
@@ -74,14 +75,24 @@ class SwagPost {
 
 			$shortcodes=ShortcodeUtil::extractShortcodes($this->getPost()->post_content);
 			foreach ($shortcodes as $shortcode) {
+				$item=NULL;
+
 				switch ($shortcode["_"]) {
 					case "h5p":
 					case "h5p-course-item":
 						$item=new SwagPostItem("h5p",$shortcode);
-						$item->setSwagPost($this);
-						$item->setIndex(sizeof($this->swagPostItems));
-						$this->swagPostItems[]=$item;
 						break;
+
+					case "deliverable":
+					case "deliverable-course-item":
+						$item=new SwagPostItem("deliverable",$shortcode);
+						break;
+				}
+
+				if ($item) {
+					$item->setSwagPost($this);
+					$item->setIndex(sizeof($this->swagPostItems));
+					$this->swagPostItems[]=$item;
 				}
 			}
 
@@ -94,32 +105,32 @@ class SwagPost {
 	/**
 	 * Get related statements for current user.
 	 */
-	public function getRelatedStatements() {
-		if (is_array($this->relatedStatements))
-			return $this->relatedStatements;
+	public function getRelatedStatements($swagUser) {
+		$email=$swagUser->getEmail();
+
+		if (array_key_exists($email,$this->relatedStatementsByEmail))
+			return $this->relatedStatementsByEmail[$email];
 
 		$xapi=Swag::instance()->getXapi();
 		if (!$xapi)
 			return array();
 
-		$user=get_current_user();
-
-		$this->relatedStatements=$xapi->getStatements(array(
-			"agentEmail"=>$user->user_email,
+		$this->relatedStatementsByEmail[$email]=$xapi->getStatements(array(
+			"agentEmail"=>$swagUser->getEmail(),
 			"activity"=>get_permalink($this->getPost()->ID),
 			"verb"=>"http://adlnet.gov/expapi/verbs/completed",
 			"related_activities"=>"true"
 		));
 
-		return $this->relatedStatements;
+		return $this->relatedStatementsByEmail[$email];
 	}
 
 	/**
 	 * Are all the swag post items completed?
 	 */
-	public function isAllSwagPostItemsCompleted() {
+	public function isAllSwagPostItemsCompleted($swagUser) {
 		foreach ($this->getSwagPostItems() as $swagPostItem) {
-			if (!$swagPostItem->isCompleted())
+			if (!$swagPostItem->isCompleted($swagUser))
 				return FALSE;
 		}
 
@@ -151,12 +162,12 @@ class SwagPost {
 	/**
 	 * Save xapi statements for provided swag for current user.
 	 */
-	public function saveProvidedSwag() {
+	public function saveProvidedSwag($swagUser) {
 		$xapi=Swag::instance()->getXapi();
 		if (!$xapi)
 			return array();
 
-		$user=wp_get_current_user();
+		$user=$swagUser->getUser();
 		if (!$user || !$user->ID)
 			return;
 

@@ -21,6 +21,13 @@ class SwagUser {
 	}
 
 	/**
+	 * Get user.
+	 */
+	public function getUser() {
+		return $this->user;
+	}
+
+	/**
 	 * Get collected swag.
 	 */
 	public function getCompletedSwag() {
@@ -85,6 +92,18 @@ class SwagUser {
 	}
 
 	/**
+	 * Get email.
+	 */
+	public function getEmail() {
+		$email=$this->user->user_email;
+
+		if (!$email)
+			throw new Exception("User doesn't have an email");
+
+		return $email;
+	}
+
+	/**
 	 * Get current SwagUser.
 	 */
 	public static function getCurrent() {
@@ -94,5 +113,18 @@ class SwagUser {
 			$current=new SwagUser(wp_get_current_user());
 
 		return $current;
+	}
+
+	/**
+	 * Get by email.
+	 */
+	public static function getByEmail($email) {
+		$email=str_replace("mailto:","",$email);
+
+		$user=get_user_by("email",$email);
+		if (!$user || !$user->ID)
+			throw new Exception("user not found: ".$email);
+
+		return new SwagUser($user);
 	}
 }

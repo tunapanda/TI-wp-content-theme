@@ -15,7 +15,7 @@
 				<?php if ($swagPostItem->isSelected()) echo "class='selected'"; ?>
 			>
 				<a href="<?php echo $swagPostItem->getUrl(); ?>">
-					<?php if ($swagPostItem->isCompleted()) { ?>
+					<?php if ($swagPostItem->isCompleted($swagUser)) { ?>
 						<img 
 							class='coursepresentation'
 							src="<?php echo get_template_directory_uri(); ?>/img/completed-logo.png"

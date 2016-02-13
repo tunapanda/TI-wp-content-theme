@@ -52,10 +52,10 @@ class SwagPostItem {
 	/**
 	 * Is this part completed?
 	 */
-	public function isCompleted() {
+	public function isCompleted($swagUser) {
 		$objectUrl=$this->getObjectUrl();
 
-		foreach ($this->swagPost->getRelatedStatements() as $statement) {
+		foreach ($this->swagPost->getRelatedStatements($swagUser) as $statement) {
 			if ($statement["object"]["id"]==$objectUrl)
 				return TRUE;
 		}
@@ -75,6 +75,13 @@ class SwagPostItem {
 						get_site_url().
 						"/wp-admin/admin-ajax.php?action=h5p_embed&id=".$id;
 					break;
+
+				case "deliverable":
+					$slug=$this->parameters["slug"];
+					$this->objectUrl=
+						get_site_url().
+						"/wp-content/plugins/wp-deliverable/deliverable.php/".$slug;
+					break;
 			}
 		}
 
@@ -85,10 +92,23 @@ class SwagPostItem {
 	 * Get the title.
 	 */
 	public function getTitle() {
+		global $wpdb;
+
 		switch ($this->type) {
 			case "h5p":
 				$id=H5pUtil::getH5pIdByShortcodeArgs($this->parameters);
 				return H5pUtil::getH5pTitleById($id);
+				break;
+
+			case "deliverable":
+				$slug=$this->parameters["slug"];
+				$q=$wpdb->prepare("SELECT title FROM {$wpdb->prefix}deliverable WHERE slug=%s",$slug);
+				$title=$wpdb->get_var($q);
+
+				if ($wpdb->last_error)
+					throw new Exception($wpdb->last_error);
+
+				return $title;
 				break;
 		}
 	}
@@ -101,6 +121,11 @@ class SwagPostItem {
 			case "h5p":
 				$id=H5pUtil::getH5pIdByShortcodeArgs($this->parameters);
 				return do_shortcode("[h5p id='$id']");
+				break;
+
+			case "deliverable":
+				$slug=$this->parameters["slug"];
+				return do_shortcode("[deliverable slug='$slug']");
 				break;
 		}
 	}

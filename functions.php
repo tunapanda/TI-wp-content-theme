@@ -112,6 +112,7 @@
 		$swagUser=SwagUser::getCurrent();
 
 		$template=new Template(__DIR__."/tpl/course.php");
+		$template->set("swagUser",$swagUser);
 		$template->set("swagPost",$swagPost);
 
 		$template->set("showHintInfo",FALSE);
@@ -207,19 +208,32 @@
 		if ($statement["verb"]["id"]!="http://adlnet.gov/expapi/verbs/completed")
 			return;
 
-		$postPermalink=$statement["context"]["contextActivities"]["grouping"][0]["id"];
+		$postPermalink=NULL;
+
+		if (isset($statement["context"]["contextActivities"]["grouping"][0]["id"]))
+			$postPermalink=$statement["context"]["contextActivities"]["grouping"][0]["id"];
+
+		if (isset($statement["context"]["contextActivities"]["category"][0]["id"]))
+			$postPermalink=$statement["context"]["contextActivities"]["category"][0]["id"];
+
+		if (!$postPermalink)
+			return;
+
 		$postId=url_to_postid($postPermalink);
 		$post=get_post($postId);
 
 		if (!$post)
 			return;
 
+		$swagUser=SwagUser::getByEmail($statement["actor"]["mbox"]);
+
 		$swagPost=new SwagPost($post);
-		if ($swagPost->isAllSwagPostItemsCompleted())
-			$swagPost->saveProvidedSwag();
+		if ($swagPost->isAllSwagPostItemsCompleted($swagUser))
+			$swagPost->saveProvidedSwag($swagUser);
 	}
 
 	add_action("h5p-xapi-post-save","ti_xapi_post_save");
+	add_action("deliverable-xapi-post-save","ti_xapi_post_save");
 
 	function ti_my_swag() {
 		$swagUser=new SwagUser(wp_get_current_user());
