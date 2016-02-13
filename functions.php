@@ -1,49 +1,11 @@
 <?php
 
 	require_once __DIR__."/utils.php";
-	require_once __DIR__."/xapi.php";
+	require_once __DIR__."/src/utils/Xapi.php";
 	require_once __DIR__."/src/utils/ShortcodeUtil.php";
 	require_once __DIR__."/src/swag/SwagUser.php";
 	require_once __DIR__."/src/swag/SwagPost.php";
-
-	/**
-	 * Compute the url that H5P uses to save xAPI statements.
-	 * Looks somethins like:
-	 * http://localhost/wordpress/wp-admin/admin-ajax.php?action=h5p_embed&id=5
-	 */
-	function getH5pObjectUrlById($h5pId) {
-		return get_site_url()."/wp-admin/admin-ajax.php?action=h5p_embed&id=".$h5pId;
-	}
-
-	/**
-	 * Check if the H5P item has been completed by the current user.
-	 */
-	function isH5pCompleted($h5pId) {
-		$activityUrl=getH5pObjectUrlById($h5pId);
-
-		if (!get_option("ti_xapi_endpoint_url"))
-			return FALSE;
-
-		$xapi=new Xapi(
-			get_option("ti_xapi_endpoint_url"),
-			get_option("ti_xapi_username"),
-			get_option("ti_xapi_password")
-		);
-
-		$user=wp_get_current_user();
-
-		if (!$user || !$user->user_email)
-			return;
-
-		$params=array();
-		$params["agentEmail"]=$user->user_email;
-		$params["activity"]=$activityUrl;
-		$params["verb"]="http://adlnet.gov/expapi/verbs/completed";
-
-		$statements=$xapi->getStatements($params);
-
-		return sizeof($statements)>0;
-	}
+	require_once __DIR__."/src/utils/Template.php";
 
 	/**
 	 * Scripts and styles.
@@ -146,21 +108,16 @@
 	 * Handle the course shortcode.
 	 */
 	function ti_course($args, $content) {
-		global $ti_course_items;
+		$swagPost=SwagPost::getCurrent();
+		$swagUser=SwagUser::getCurrent();
 
-		$post=get_post();
-		$swagPost=new SwagPost($post);
-		$swagUser=new SwagUser(wp_get_current_user());
-		$ti_course_items=array();
-		do_shortcode($content);
+		$template=new Template(__DIR__."/tpl/course.php");
+		$template->set("swagPost",$swagPost);
 
-		$tab=0;
-		if (array_key_exists("tab",$_REQUEST) && $_REQUEST["tab"])
-			$tab=$_REQUEST["tab"];
-
-		$s="";
-
+		$template->set("showHintInfo",FALSE);
 		if (!$swagUser->isSwagCompleted($swagPost->getRequiredSwag())) {
+			$template->set("showHintInfo",TRUE);
+
 			$uncollected=$swagUser->getUncollectedSwag($swagPost->getRequiredSwag());
 			$uncollectedFormatted=array();
 
@@ -176,115 +133,14 @@
 					$swagpath->post_title.
 					"</a>";
 
-			$s.="<div class='course-info'>";
-			$s.="In order to get the most out of this swagpath, it is recommended that you ";
-			$s.="first collect these swag: ";
-			$s.=join(", ",$uncollectedFormatted);
-			$s.=". You can collect them by following these swagpaths: ";
-			$s.=join(", ",$swagpathsFormatted);
-			$s.=".</div>";
+			$template->set("uncollectedSwag",join(", ",$uncollectedFormatted));
+			$template->set("uncollectedSwagpaths",join(", ",$swagpathsFormatted));
 		}
 
-		$s.="<div class='content-tab-wrapper'>";
-		$s.="<ul class='content-tab-list'>";
-
-		$index=0;
-		$title="";
-		foreach ($ti_course_items as $courseItem) {
-			$link=get_page_link($current->ID)."?tab=".$index;
-			$sel="";
-
-			if ($index==$tab) {
-				$sel="class='selected'";
-				$title=$courseItem[title];
-			}
-
-			$s.="<li $sel>";
-			$s.="<a href='$link'>";
-
-			if ($courseItem["completed"])
-				$s.="<img class='coursepresentation' src='".get_template_directory_uri()."/img/completed-logo.png'/>";
-
-			else
-				$s.="<img class='coursepresentation' src='".get_template_directory_uri()."/img/coursepresentation-logo.png'/>";
-
-			$s.="</a>";
-			$s.="</li>";
-
-			$index++;
-		}
-
-		$s.="</ul>";
-		$s.="<div class='content-tab-content'>";
-		$s.="<h1>$title</h1>";
-		$s.=do_shortcode($ti_course_items[$tab]["content"]);
-		$s.="</div>";
-		$s.='</div>';
-
-		return $s;
+		return $template->render();
 	}
 
 	add_shortcode("course","ti_course");
-
-	/**
-	 * Get h5p content from the database.
-	 */
-	function getH5pContentBy($by, $value) {
-		global $wpdb;
-
-		$q=$wpdb->prepare(
-			"SELECT * ".
-			"FROM   {$wpdb->prefix}h5p_contents ".
-			"WHERE  $by=%s",
-			$value
-		);
-
-		return $wpdb->get_row($q);
-	}
-
-	/**
-	 * Get H5P content by shortcode args.
-	 */
-	function getH5pContentByShortcodeArgs($args) {
-		$h5pContent=NULL;
-
-		if (array_key_exists("id", $args))
-			$h5pContent=getH5pContentBy("id",$args["id"]);
-
-		else if (array_key_exists("title", $args))
-			$h5pContent=getH5pContentBy("title",$args["title"]);
-
-		else if (array_key_exists("slug", $args))
-			$h5pContent=getH5pContentBy("slug",$args["slug"]);
-
-		return $h5pContent;
-	}
-
-	/**
-	 * The h5p-course-item short code.
-	 */
-	function ti_h5p_course_item($args) {
-		global $ti_course_items;
-
-		$h5pContent=getH5pContentByShortcodeArgs($args);
-
-		if (!$h5pContent) {
-			$ti_course_items[]=array(
-				"title"=>"Not found",
-				"content"=>"H5P Content not found<br><pre>".print_r($args,TRUE)."</pre>"
-			);
-
-			return;
-		}
-
-		$ti_course_items[]=array(
-			"title"=>$h5pContent->title,
-			"content"=>"[h5p id='$h5pContent->id']",
-			"completed"=>isH5pCompleted($h5pContent->id)
-		);
-	}
-
-	add_shortcode("h5p-course-item","ti_h5p_course_item");
 
 	/**
 	 * Init.
@@ -338,12 +194,10 @@
 		return "<div id='swagmapcontainer'>
 		<div id='swag_description_container'>A swagmap is gamified display of performance. The green hollow nodes indicate the swagpath is not completed or attempted while non-hollow green nodes indicate the swagpaths is completed and questions answered.
 		</div>
-		
 		</div>";
 
 	}
 	add_shortcode("swagmap","ti_swagmap");
-	
 
 	/**
 	 * Act on completed xapi statements.
@@ -360,71 +214,9 @@
 		if (!$post)
 			return;
 
-		//error_log("saved complete statement post id: ".$postId);
-
-		$shortcodes=ShortcodeUtil::extractShortcodes($post->post_content);
-		foreach ($shortcodes as $attrs) {
-			if ($attrs["_"]=="h5p-course-item") {
-				$h5pContent=getH5pContentByShortcodeArgs($attrs);
-				if (!$h5pContent)
-					error_log("H5P not found... ".print_r($attrs,TRUE));
-
-				if (!isH5pCompleted($h5pContent->id)) {
-					//error_log("not yet complete, returning: ".$h5pContent->id);
-					return;
-				}
-			}
-		}
-
-		$provides=get_post_meta($post->ID,"provides");
-
-		$user=wp_get_current_user();
-		if (!$user || !$user->user_email)
-			return;
-
-		$xapi=new Xapi(
-			get_option("ti_xapi_endpoint_url"),
-			get_option("ti_xapi_username"),
-			get_option("ti_xapi_password")
-		);
-
-		foreach ($provides as $provide) {
-			$statement=array(
-				"actor"=>array(
-					"mbox"=>"mailto:".$user->user_email,
-					"name"=>$user->display_name
-				),
-
-				"object"=>array(
-					"objectType"=>"Activity",
-					"id"=>"http://swag.tunapanda.org/".$provide,
-					"definition"=>array(
-						"name"=>array(
-							"en-US"=>$provide
-						)
-					)
-				),
-
-				"verb"=>array(
-					"id"=>"http://adlnet.gov/expapi/verbs/completed"
-				),
-
-				"context"=>array(
-					"contextActivities"=>array(
-						"category"=>array(
-							array(
-								"objectType"=>"Activity",
-								"id"=>"http://swag.tunapanda.org/"
-							)
-						)
-					)
-				),
-			);
-
-			$xapi->putStatement($statement);
-
-			//error_log("got swag: ".$provide);
-		}
+		$swagPost=new SwagPost($post);
+		if ($swagPost->isAllSwagPostItemsCompleted())
+			$swagPost->saveProvidedSwag();
 	}
 
 	add_action("h5p-xapi-post-save","ti_xapi_post_save");

@@ -1,5 +1,7 @@
 <?php
 
+if (!class_exists("Xapi")) {
+
 	/**
 	 * Xapi.
 	 */
@@ -114,3 +116,4 @@
 			}
 		}
 	}
+}

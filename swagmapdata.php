@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__."/WpUtil.php";
-require_once __DIR__."/xapi.php";
+require_once __DIR__."/src/utils/Xapi.php";
 require_once __DIR__."/src/swag/SwagUser.php";
 require_once WpUtil::getWpLoadPath();
 

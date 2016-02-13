@@ -83,4 +83,16 @@ class SwagUser {
 
 		return $uncollected;
 	}
+
+	/**
+	 * Get current SwagUser.
+	 */
+	public static function getCurrent() {
+		static $current;
+
+		if (!$current)
+			$current=new SwagUser(wp_get_current_user());
+
+		return $current;
+	}
 }
