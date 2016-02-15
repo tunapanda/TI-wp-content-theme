@@ -106,6 +106,9 @@ class SwagPost {
 	 * Get related statements for current user.
 	 */
 	public function getRelatedStatements($swagUser) {
+		if (!$swagUser->isLoggedIn())
+			return array();
+
 		$email=$swagUser->getEmail();
 
 		if (array_key_exists($email,$this->relatedStatementsByEmail))

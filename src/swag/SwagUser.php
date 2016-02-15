@@ -92,6 +92,19 @@ class SwagUser {
 	}
 
 	/**
+	 * Logged in?
+	 */
+	public function isLoggedIn() {
+		if (!$this->user)
+			return FALSE;
+
+		if (!$this->user->ID)
+			return FALSE;
+
+		return TRUE;
+	}
+
+	/**
 	 * Get email.
 	 */
 	public function getEmail() {
