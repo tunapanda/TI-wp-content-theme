@@ -67,6 +67,9 @@ class SwagPostItem {
 	 * Get xAPI for checking completion.
 	 */
 	public function getObjectUrl() {
+		if (!$this->isTypeAvailable())
+			return NULL;
+
 		if (!$this->objectUrl) {
 			switch ($this->type) {
 				case "h5p":
@@ -94,6 +97,9 @@ class SwagPostItem {
 	public function getTitle() {
 		global $wpdb;
 
+		if (!$this->isTypeAvailable())
+			return "";
+
 		switch ($this->type) {
 			case "h5p":
 				$id=H5pUtil::getH5pIdByShortcodeArgs($this->parameters);
@@ -114,9 +120,29 @@ class SwagPostItem {
 	}
 
 	/**
+	 * Is the type for this item available?
+	 */
+	public function isTypeAvailable() {
+		switch ($this->type) {
+			case "h5p":
+				return is_plugin_active("h5p/h5p.php");
+				break;
+
+			case "deliverable":
+				return is_plugin_active("wp-deliverable/wp-deliverable.php");
+				break;
+		}
+
+		return FALSE;
+	}
+
+	/**
 	 * Get content.
 	 */
 	public function getContent() {
+		if (!$this->isTypeAvailable())
+			return "dependencies missing for ".$this->type;
+
 		switch ($this->type) {
 			case "h5p":
 				$id=H5pUtil::getH5pIdByShortcodeArgs($this->parameters);
