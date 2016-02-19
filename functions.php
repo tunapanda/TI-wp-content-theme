@@ -11,7 +11,7 @@
 	 * Scripts and styles.
 	 */
 	function ti_enqueue_scripts() {
-		wp_register_style("ti",get_template_directory_uri()."/style.css?v=7"); //?v=x added to refresh browser cache when stylesheet is updated. 
+		wp_register_style("ti",get_template_directory_uri()."/style.css?v=7"); //?v=x added to refresh browser cache when stylesheet is updated.
 		wp_enqueue_style("ti");
 
 		wp_register_script("d3",get_template_directory_uri()."/d3.v3.min.js");
@@ -44,9 +44,9 @@
 				));
 			}
 		}
-        
+
         $out .= '</div>';
-        
+
 		return $out;
 	}
 
@@ -70,7 +70,7 @@
 		$out = '<div class="masonry-loop">';
 
 		$unpreparedCount=0;
-        
+
 		foreach ($pages as $page) {
 			if ($page->ID!=$parentId) {
 				$swagPost=new SwagPost($page);
@@ -114,6 +114,20 @@
 		$template=new Template(__DIR__."/tpl/course.php");
 		$template->set("swagUser",$swagUser);
 		$template->set("swagPost",$swagPost);
+
+// Creating lesson plan functionality
+
+		$template->set("showLessonPlan",FALSE);
+		if (array_key_exists("lessonplan",$args)) {
+		$template->set("lessonPlan",get_home_url().'/wp-content/uploads'.$args["lessonplan"]);
+		$template->set("showLessonPlan",TRUE);}
+
+		if ($swagUser->isSwagCompleted($swagPost->getProvidedSwag())) {
+			$template->set("lessonplanAvailable",TRUE);
+		}
+		else {
+			$template->set("lessonplanAvailable",FALSE);
+		}
 
 		$template->set("showHintInfo",FALSE);
 		if (!$swagUser->isSwagCompleted($swagPost->getRequiredSwag())) {

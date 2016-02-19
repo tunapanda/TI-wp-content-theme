@@ -16,12 +16,12 @@
 			>
 				<a href="<?php echo $swagPostItem->getUrl(); ?>">
 					<?php if ($swagPostItem->isCompleted($swagUser)) { ?>
-						<img 
+						<img
 							class='coursepresentation'
 							src="<?php echo get_template_directory_uri(); ?>/img/completed-logo.png"
 						/>
 					<?php } else { ?>
-						<img 
+						<img
 							class='coursepresentation'
 							src="<?php echo get_template_directory_uri(); ?>/img/coursepresentation-logo.png"
 						/>
@@ -31,7 +31,12 @@
 		<?php } ?>
 	</ul>
 	<div class='content-tab-content'>
-		<h1><?php echo $swagPost->getSelectedItem()->getTitle(); ?></h1>
+		<h1 style="text-align:left;float:left;"><?php echo $swagPost->getSelectedItem()->getTitle(); ?></h1>
+		<?php if($showLessonPlan and $lessonplanAvailable) : ?>
+		<a href="<?php echo $lessonPlan; ?>" class="button-lessonplan" style="text-align:right;float:right">Download Lesson Plan</a>
+	<?php elseif ($showLessonPlan and !$lessonplanAvailable) : ?>
+		<button style="text-align:right;float:right" title="Please complete swag to download the lesson plan" class="button-lessonplan disabled" disabled>Download Lesson Plan</button>
+		<?php endif; ?>
 		<?php echo $swagPost->getSelectedItem()->getContent(); ?>
 	</div>
 </div>
