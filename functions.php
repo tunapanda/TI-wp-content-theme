@@ -20,3 +20,4 @@
 	}
 	add_action('wp_enqueue_scripts','ti_enqueue_scripts');
 	
+	register_nav_menu("navigation","Main menu for the site");
