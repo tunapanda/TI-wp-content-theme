@@ -122,7 +122,7 @@
 		$template->set("lessonPlan",get_home_url().'/wp-content/uploads'.$args["lessonplan"]);
 		$template->set("showLessonPlan",TRUE);}
 
-		if ($swagUser->isSwagCompleted($swagPost->getProvidedSwag())) {
+			if ($swagPost->getProvidedSwag() && $swagUser->isSwagCompleted($swagPost->getProvidedSwag())) {
 			$template->set("lessonplanAvailable",TRUE);
 		}
 		else {
