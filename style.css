@@ -1,9 +1,15 @@
 /**
-Theme Name: learning.tunapanda.org
+Theme Name: learning.tunapanda.org.refactor
 Theme Description: Theme for learning.tunapanda.org
+<<<<<<< HEAD
 GitHub Theme URI: tunapanda/TI-wp-content-theme
 Version: 0.0.17
+=======
+GitHub Theme URI: 
+Version: 0.0.16
+>>>>>>> refactor
 */
+
 
 /**** General ****/
 html {
@@ -124,6 +130,7 @@ body {
 	display: inline-block;
 }
 
+<<<<<<< HEAD
 /**** Swag. ****/
 .swag-badge-container {
 	display: inline-block;
@@ -667,6 +674,8 @@ img.course-completed {
 	box-shadow: 0px 0px 10px #808080;
 }
 
+=======
+>>>>>>> refactor
 /****breadcrumbs***/
 #breadcrumbs {
 	padding-left: none;
@@ -745,12 +754,73 @@ img.course-completed {
 	border-left-color: #000000;
 }
 
+/**** Forms ****/
+.button-primary, .button {
+    border: 1px solid #009900;
+  background: white;
+  padding: 10px 15px;
+  color: #009900;
+  text-decoration: none;
+  text-align: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-radius: 1000px; 
+  cursor: pointer;  
+}
+
+.button-primary:hover,
+.button-primary:focus,
+.button:hover, 
+.button:focus{
+    border: 1px solid #009900;
+  background: #009900;
+  color: white; 
+}
+
+.button-primary:active,
+.button:active{
+    background: #008b00;
+  color: #97e394; 
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.7) inset;
+}
+
+.button-secondary {
+    border: 1px solid #C36E4D;
+  background: white;
+  padding: 10px 15px;
+  color: #C36E4D;
+  text-decoration: none;
+  text-align: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-radius: 1000px; 
+  cursor: pointer;  
+}
+
+.button-secondary:hover,
+.button-secondary:focus{
+    border: 1px solid #C36E4D;
+  background: #C36E4D;
+  color: white; 
+}
+
+.button-secondary:active{
+    background: #714126;
+  color: #a77354; 
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.7) inset;
+}
+
+/**** H5P. ****/
+.h5p-iframe-wrapper {
+  box-shadow: 0px 0px 10px #808080;
+}
+
 /****wp profile builder override***/
 .wppb-user-forms,
 .wppb-user-forms *{
-	-webkit-box-sizing: border-box !important; /* Safari/Chrome, other WebKit */
-	-moz-box-sizing: border-box !important;    /* Firefox, other Gecko */
-	box-sizing: border-box !important;         /* Opera/IE 8+ */
+  -webkit-box-sizing: border-box !important; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box !important;    /* Firefox, other Gecko */
+  box-sizing: border-box !important;         /* Opera/IE 8+ */
 }
 .wppb-user-forms {
     max-width: 500px;
@@ -788,7 +858,7 @@ img.course-completed {
 .wppb-user-forms input[type="url"],
 .wppb-user-forms input[type="password"],
 .wppb-user-forms input[type="search"] {
-	padding: 3px;
+  padding: 3px;
 }
 
 .wppb-user-forms input[type="text"]:focus,
@@ -796,23 +866,30 @@ img.course-completed {
 .wppb-user-forms input[type="url"]:focus,
 .wppb-user-forms input[type="password"]:focus,
 .wppb-user-forms input[type="search"]:focus {
-	border: 1px solid #009900;
-	outline:none;
-	background: white;
-	color: #009900;
+  border: 1px solid #009900;
+  outline:none;
+  background: white;
+  color: #009900;
 }
 
 .wppb-user-forms textarea {
+<<<<<<< HEAD
 	overflow: auto;
 	padding-left: 3px;
 	vertical-align: top;
 	width: 100%;
+=======
+  overflow: auto; 
+  padding-left: 3px;
+  vertical-align: top;
+  width: 100%;
+>>>>>>> refactor
 }
 .wppb-user-forms ul{
-	max-width:900px;
-	list-style:none;
-	margin-left:0;
-	margin-right:0;
+  max-width:900px;
+  list-style:none;
+  margin-left:0;
+  margin-right:0;
     padding-left:0;
     padding-right:0;
 }
@@ -822,16 +899,16 @@ img.course-completed {
 .wppb-user-forms ul li,
 #wppb-login-wrap p,
 #select_user_to_edit_form p{
-	overflow:hidden;
-	margin:0;
-	padding-bottom:14px;
+  overflow:hidden;
+  margin:0;
+  padding-bottom:14px;
 }
 .wppb-form-field label,
 #wppb-login-wrap .login-username label,
 #wppb-login-wrap .login-password label{
-	width:30%;
-	float:left;
-	min-height:1px;
+  width:30%;
+  float:left;
+  min-height:1px;
 }
 .wppb-form-field input,
 .wppb-form-field input[type="text"],
@@ -845,8 +922,8 @@ img.course-completed {
 .wppb-radios,
 #wppb-login-wrap .login-username input,
 #wppb-login-wrap .login-password input{
-	width:69.9%;
-	float:left;
+  width:69.9%;
+  float:left;
 }
 .wppb-user-forms .wppb-wysiwyg .wp-editor-wrap .wp-editor-tabs *{
     box-sizing: content-box !important;
@@ -864,7 +941,7 @@ img.course-completed {
 }
 
 @media only screen and ( max-width: 480px ) /* mobile */{
-	.login-remember label,
+  .login-remember label,
     .login-submit .button-primary,
     .form-submit .button,
     .wppb-send-credentials-checkbox label{
@@ -883,9 +960,10 @@ img.course-completed {
     .wppb-radios,
     #wppb-login-wrap .login-username input,
     #wppb-login-wrap .login-password input{
-    	width:100% !important;
-    	float:left;
+      width:100% !important;
+      float:left;
     }
+<<<<<<< HEAD
 }
 
 /**** Forms ****/
@@ -968,3 +1046,6 @@ img.course-completed {
 	opacity: 0.6;
 	cursor: not-allowed;
 }
+=======
+}
+>>>>>>> refactor

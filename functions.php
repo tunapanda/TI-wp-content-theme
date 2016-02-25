@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 	require_once __DIR__."/utils.php";
@@ -156,115 +157,28 @@
 	}
 
 	add_shortcode("course","ti_course");
+=======
+<?php 
+>>>>>>> refactor
 
 	/**
-	 * Init.
-	 */
+	* Init.
+	*/
 	function ti_init() {
 		add_post_type_support('page','excerpt');
 		add_post_type_support('page','custom-fields');
 	}
-
 	add_action("init","ti_init");
 	add_theme_support('menus');
 
-	/**
-	 * Create the admin menu.
-	 */
-	function ti_admin_menu() {
-		add_options_page(
-			'Tunapanda Learning',
-			'Tunapanda Learning',
-			'manage_options',
-			'ti_settings',
-			'ti_create_settings_page'
-		);
-	}
 
 	/**
-	 * Admin init.
+	 * Scripts and styles.
 	 */
-	function ti_admin_init() {
-		register_setting("ti","ti_xapi_endpoint_url");
-		register_setting("ti","ti_xapi_username");
-		register_setting("ti","ti_xapi_password");
+	function ti_enqueue_scripts() {
+		wp_register_style("ti",get_template_directory_uri()."/style.css?v=7"); //?v=x added to refresh browser cache when stylesheet is updated. 
+		wp_enqueue_style("ti");
 	}
-
-	/**
-	 * Create settings page.
-	 */
-	function ti_create_settings_page() {
-		require __DIR__."/settings.php";
-	}
-
-	add_action('admin_menu','ti_admin_menu');
-	add_action('admin_init','ti_admin_init');
-
+	add_action('wp_enqueue_scripts','ti_enqueue_scripts');
+	
 	register_nav_menu("navigation","Main menu for the site");
-
-	/**
-	 * Render swagmap.
-	 */
-	function ti_swagmap() {
-		return "<div id='swagmapcontainer'>
-		<div id='swag_description_container'>A swagmap is gamified display of performance. The green hollow nodes indicate the swagpath is not completed or attempted while non-hollow green nodes indicate the swagpaths is completed and questions answered.
-		</div>
-		</div>";
-
-	}
-	add_shortcode("swagmap","ti_swagmap");
-
-	/**
-	 * Act on completed xapi statements.
-	 * Save xapi statement for swag if applicable.
-	 */
-	function ti_xapi_post_save($statement) {
-		if ($statement["verb"]["id"]!="http://adlnet.gov/expapi/verbs/completed")
-			return;
-
-		$postPermalink=NULL;
-
-		if (isset($statement["context"]["contextActivities"]["grouping"][0]["id"]))
-			$postPermalink=$statement["context"]["contextActivities"]["grouping"][0]["id"];
-
-		if (isset($statement["context"]["contextActivities"]["category"][0]["id"]))
-			$postPermalink=$statement["context"]["contextActivities"]["category"][0]["id"];
-
-		if (!$postPermalink)
-			return;
-
-		$postId=url_to_postid($postPermalink);
-		$post=get_post($postId);
-
-		if (!$post)
-			return;
-
-		$swagUser=SwagUser::getByEmail($statement["actor"]["mbox"]);
-
-		$swagPost=new SwagPost($post);
-		if ($swagPost->isAllSwagPostItemsCompleted($swagUser))
-			$swagPost->saveProvidedSwag($swagUser);
-	}
-
-	add_action("h5p-xapi-post-save","ti_xapi_post_save");
-	add_action("deliverable-xapi-post-save","ti_xapi_post_save");
-
-	function ti_my_swag() {
-		$swagUser=new SwagUser(wp_get_current_user());
-		$completedSwag=$swagUser->getCompletedSwag();
-
-		$baseuri=get_template_directory_uri();
-
-		$out="";
-
-		foreach ($completedSwag as $swag) {
-			$out.="<div class='swag-badge-container'>\n";
-			$out.="<img class='swag-badge-image' src='$baseuri/img/badge.png'>\n";
-			$out.="<div class='swag-badge-label'>$swag</div>\n";
-			$out.="</div>\n";
-		}
-
-		return $out;
-	}
-
-	add_shortcode("my-swag","ti_my_swag");
