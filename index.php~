@@ -1,5 +1,6 @@
 <?php get_header(); ?>
-	
+
+	<?php comments_template();?>	
 
 	<?php if ( have_posts() ) : ?>
 	
@@ -37,7 +38,5 @@
 		
 	endif;
 	?>
-	
-	<?php comments_template();?>
 	
 <?php get_footer(); ?>
