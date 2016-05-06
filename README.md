@@ -1,58 +1,21 @@
 # TI-wp-content-theme
-Wordpress theme for [content.tunapanda.org](http://content.tunapanda.org/).
+Wordpress theme for [learning.tunapanda.org](http://learning.tunapanda.org/).
+Its mainly servers as the structure for the system. 
 
-## How's it going?
-
-* [Issue tracking](https://waffle.io/tunapanda/TI-wp-content-theme/)
-* [Metrics](https://www.dasheroo.com/reports/48fa1964f67d528a166fa6bc976f897d/public)
-
-## Plugins
-
-We are using these plugins from the wordpress plugin repositories
-
-* H5P (to install/update h5p content types follow the instructions [here](https://h5p.org/update-all-content-types))
-* wp-h5p-xapi
-* tabby-responsive-tabs
-* profile-builder
-* logged-in-user-shortcode
-* wpMandrill (mail server, optional)
+## Installation and setup
+* First and foremost you need to [install Wordpress](https://codex.wordpress.org/Installing_WordPress).
+* You can install the theme by cloning down this repo into your Wordpress themes directory and if you prefer, you can clone it to somewhere else on your local machine as symlink it from the themes folder. 
+* You can also install it using [Github updator](https://github.com/afragen/github-updater). 
+* And finaly activate the theme by going into Appearance>Themes from the main admin menu.
  
-We are also using [github updater](https://github.com/afragen/github-updater) for some plugins
+## Hacking !!
+We use this repo's [github issues](https://waffle.io/tunapanda/TI-wp-content-theme/)to move most of the projects related to the swag system and track how everyone's contributions.
+This repo is connected to [dasheroo](https://www.dasheroo.com/reports/48fa1964f67d528a166fa6bc976f897d/public) that helps visualize the progress and metrics of the project.   
 
-Clone the github-updater repository and copy the plugin to your wordpress plugins directory. 
-Go to Settings > GitHub Updater > Install Plugin and enter the url for the following plugins
-
-* [tabby-cookie](https://github.com/tunapanda/tabby-cookie)
-* [wp-remote-sync](https://github.com/tunapanda/wp-remote-sync)
-* [Dasheroo KPIs](https://github.com/tunapanda/wp-dasheroo-kpis) (optional)
-
-## Setting up a local environment for hacking
-
-In order to participate in the developemnt, you need to have the following thigs set up on your computer:
-
- * Wordpress (This implies a webserver, e.g. Apache, and a database server, e.g. MySql).
-
-Then, clone this repository and put it in your Wordpress themes folder. If you prefer, you can clone it to somewhere else on your local machine as symlink it from the themes folder. 
-
-Important: After you clone and install the theme on your machine, you will need to activate it and this is how;
-- Go to Apperance, point to theme and click.
- 
-
-- <img src="https://raw.githubusercontent.com/tunapanda/TI-wp-content-theme/master/theme_lead.png"> 
--
-
-- Locate content_tunapanda_org theme and click on Activate.
-
-
--<img src="https://raw.githubusercontent.com/tunapanda/TI-wp-content-theme/master/activate_lead.png">
-
-
-Important! Remember to always do:
+To keepup with constant updates, remember to always do:
 
 ```
 git pull
 ```
-
-So you have the latest version of the theme on your computer when you deploy it to the live site.
 
 Have fun!
