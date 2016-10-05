@@ -130,7 +130,6 @@ body {
 	display: inline-block;
 }
 
-<<<<<<< HEAD
 /**** Swag. ****/
 .swag-badge-container {
 	display: inline-block;
@@ -155,65 +154,6 @@ body {
 	border-radius: 5px;
 	padding-left: 5px;
 	padding-right: 5px;
-}
-
-/**** Swagmap. ****/
-#swagmapcontainer {
-	width: 100%;
-	float:left;
-	background: #D3D3D3;
-}
-#swag_description_container{
-	position:bottom;
-	margin-top: 0%;
-	background:#ffffff;
-}
-
-.swagmap-link {
-	stroke: #000;
-	stroke-width: 2;
-}
-
-.swagmap-link-end {
-	fill: #000000;
-}
-
-.swagmap-swag-node circle {
-	fill-opacity: 0;
-	stroke: #53ad35;
-	stroke-width: 5px;
-}
-
-.swagmap-swag-node circle.completed {
-	fill: #53ad35;
-	fill-opacity: 1;
-}
-
-.swagmap-swagpath-node circle {
-	fill: #000000;
-	fill-opacity: 0;
-}
-
-.swagmap-swagpath-node text {
-	cursor: pointer;
-	font: 10px sans-serif;
-	text-anchor: middle;
-	fill: #000000;
-	font-weight: bold;
-}
-
-.swagmap-swagpath-node text:hover {
-	fill: #53ad35;
-}
-
-.swagmap-swag-node text {
-	cursor: default;
-	font: 12px sans-serif;
-	text-anchor: middle;
-	fill: #ffffff;
-/*	stroke: #000000;
-	font-weight: bold;*/
-	text-shadow: 0 1px 0 #000, 1px 0 0 #000, 0 -1px 0 #000, -1px 0 0 #000;
 }
 
 /**** Content. ****/
