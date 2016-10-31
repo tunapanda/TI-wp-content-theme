@@ -890,6 +890,19 @@ img.course-completed {
     }
 }
 
+/* some fix... */
+.login-username input {
+	border: 1px solid #ccc !important;
+}
+
+.login-password input {
+	border: 1px solid #ccc !important;
+}
+
+.login-username, .login-password {
+	margin-bottom: 10px !important;
+}
+
 /**** Forms ****/
 .button-primary, .button {
     border: 1px solid #009900;
