@@ -1,15 +1,9 @@
 /**
 Theme Name: learning.tunapanda.org.refactor
 Theme Description: Theme for learning.tunapanda.org
-<<<<<<< HEAD
 GitHub Theme URI: tunapanda/TI-wp-content-theme
 Version: 0.0.17
-=======
-GitHub Theme URI: 
-Version: 0.0.16
->>>>>>> refactor
 */
-
 
 /**** General ****/
 html {
@@ -614,8 +608,6 @@ img.course-completed {
 	box-shadow: 0px 0px 10px #808080;
 }
 
-=======
->>>>>>> refactor
 /****breadcrumbs***/
 #breadcrumbs {
 	padding-left: none;
@@ -813,17 +805,10 @@ img.course-completed {
 }
 
 .wppb-user-forms textarea {
-<<<<<<< HEAD
-	overflow: auto;
-	padding-left: 3px;
-	vertical-align: top;
-	width: 100%;
-=======
   overflow: auto; 
   padding-left: 3px;
   vertical-align: top;
   width: 100%;
->>>>>>> refactor
 }
 .wppb-user-forms ul{
   max-width:900px;
@@ -903,7 +888,6 @@ img.course-completed {
       width:100% !important;
       float:left;
     }
-<<<<<<< HEAD
 }
 
 /**** Forms ****/
@@ -986,6 +970,3 @@ img.course-completed {
 	opacity: 0.6;
 	cursor: not-allowed;
 }
-=======
-}
->>>>>>> refactor
