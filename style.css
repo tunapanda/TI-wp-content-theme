@@ -26,7 +26,13 @@ body {
 	height: 100%;
 }
 
-/**** Links when logged in. ****/
+/**** Logged in and logging in. ****/
+.social-login {
+  position: absolute;
+  right: 140px;
+  top: 240px;
+}
+
 .secondary-menu {
   position: absolute;
   right: 80px;
