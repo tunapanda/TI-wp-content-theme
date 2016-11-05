@@ -21,7 +21,8 @@
 					src="<?php echo get_template_directory_uri(); ?>/img/cropped-tunapandalogo.png"
 					alt="Tunapanda Logo" />
 			</a>
-			<h1>Learning</h1>
+			<h1><?php echo get_bloginfo("sitename"); ?></h1>
+			<div class="tagline"><?php echo get_bloginfo("description"); ?></div>
 			<div class="menu">
 				<?php
 					wp_nav_menu(array(

@@ -2,7 +2,7 @@
 Theme Name: learning.tunapanda.org.refactor
 Theme Description: Theme for learning.tunapanda.org
 GitHub Theme URI: tunapanda/TI-wp-content-theme
-Version: 0.0.19
+Version: 0.0.20
 */
 
 /**** General ****/
@@ -86,11 +86,20 @@ body {
 
 #header h1 {
 	position: absolute;
-	top: 11px;
+	top: 3px;
 	margin-top: 0;
 	color: #e0e0e0;
 	font-size: 40px;
 	left: 170px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,.5);
+}
+
+#header .tagline {
+  position: absolute;
+  color: #e0e0e0;
+  left: 170px;
+  top: 51px;
+  text-shadow: 1px 1px 0px rgba(0,0,0,.5);
 }
 
 @media only screen and ( max-width: 480px ) /* mobile */{
