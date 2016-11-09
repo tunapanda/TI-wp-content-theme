@@ -2,7 +2,7 @@
 Theme Name: learning.tunapanda.org.refactor
 Theme Description: Theme for learning.tunapanda.org
 GitHub Theme URI: tunapanda/TI-wp-content-theme
-Version: 0.0.20
+Version: 0.0.21
 */
 
 /**** General ****/
@@ -1107,4 +1107,72 @@ ol.commentlist {
   background-image: -webkit-linear-gradient(#a1ed80, #65be3e);
   background-image: linear-gradient(#a1ed80, #65be3e);
   cursor: pointer;
+}
+
+/**** About page. ****/
+.about-page {
+  margin-left: 90px;
+  margin-right: 90px;
+}
+
+.about-page a.link {
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #333;
+  display: inline-block;
+  height: 25px;
+}
+
+.about-menu a {
+  color: #080;
+  text-decoration: none;
+}
+
+.about-menu a:hover {
+  text-decoration: underline;
+}
+
+
+.about-page h1 {
+  color: #080;
+  margin-top: 30px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.about-page p, .about-page li {
+  font-size: 21px;
+  font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+  line-height: 1.58;
+  color: #333;
+  letter-spacing: -.003em;
+  margin-top: 5px;
+  margin-bottom: 30px
+}
+
+.about-page li {
+  margin-bottom: 5px;
+}
+
+.about-page ul {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.about-page h2 {
+  font-weight: bold;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  color: #333;
+  margin-top: 30px;
+  font-size: 24px;
+}
+
+.about-page h3 {
+  font-weight: bold;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  color: #333;
+  margin-top: 30px;
+  font-size: 21px;
 }
