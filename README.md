@@ -5,7 +5,7 @@ Its mainly servers as the structure for the system.
 ## Installation and setup
 * First and foremost you need to [install Wordpress](https://codex.wordpress.org/Installing_WordPress).
 * You can install the theme by cloning down this repo into your Wordpress themes directory and if you prefer, you can clone it to somewhere else on your local machine and symlink it from the themes folder. 
-* You can also install it using [Github updator](https://github.com/afragen/github-updater). 
+* You can also install it using [Github updater](https://github.com/afragen/github-updater). 
 * And finaly activate the theme by going into Appearance>Themes from the main admin menu.
  
 ## Hacking !!
